@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_carpool: false
+  is_meetup: false
+  time: 2016-03-03 18:51:30
+  location: MyString
+  description: MyText
+  concert_id: 
+
+two:
+  is_carpool: false
+  is_meetup: false
+  time: 2016-03-03 18:51:30
+  location: MyString
+  description: MyText
+  concert_id: 

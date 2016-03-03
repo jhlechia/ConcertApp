@@ -1,33 +1,55 @@
-<%= form_for(@concert) do |f| %>
-  <% if @concert.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+<%= form_for @concert, :html => { :class => "form-horizontal concert" } do |f| %>
 
-      <ul>
-      <% @concert.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @concert.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @concert.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist %>
+  <div class="form-group">
+    <%= f.label :artist, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :artist, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:artist) %>
   </div>
-  <div class="field">
-    <%= f.label :venue %><br>
-    <%= f.text_field :venue %>
+  <div class="form-group">
+    <%= f.label :venue, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :venue, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:venue) %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:date) %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:user_id) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                concerts_path, :class => 'btn btn-default' %>
+    </div>
   </div>
+
 <% end %>

@@ -44,6 +44,6 @@ class ConcertsControllerTest < ActionController::TestCase
       delete :destroy, id: @concert
     end
 
-    assert_redirected_to concerts_path
+    assert_redirected_to user_concerts_path
   end
 end

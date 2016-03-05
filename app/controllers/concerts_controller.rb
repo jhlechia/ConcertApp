@@ -14,7 +14,11 @@ class ConcertsController < ApplicationController
 
   # GET /concerts/new
   def new
+    @user = User.find(params[:user_id])
     @concert = Concert.new
+    @concert.user_id = params[:user_id]
+    @concerts = Concert.all
+    # render json: @concerts
   end
 
   # GET /concerts/1/edit

@@ -13,7 +13,11 @@
   <dt><strong><%= model_class.human_attribute_name(:password) %>:</strong></dt>
   <dd><%= @user.password %></dd>
 </dl>
+<button>
+<%= link_to 'Add Concert', new_user_concert_path(@user), :class => 'btn btn-default' %>
+</button>
 
+<%= render 'concerts/index' %>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               users_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

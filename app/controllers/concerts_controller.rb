@@ -14,6 +14,7 @@ class ConcertsController < ApplicationController
     # render json: params
     @concert.user_id = params[:id]
     @user = User.find(params[:id])
+    @carpool = "carpool"
   end
 
   # GET /concerts/new

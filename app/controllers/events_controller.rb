@@ -7,6 +7,11 @@ class EventsController < ApplicationController
     # @events = Event.all
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
+    if (params[:format] == 'carpool')
+      @events = @events.where(is_carpool:true)
+    else
+      @events = @events.where(is_meetup:true)
+    end
 
   end
 

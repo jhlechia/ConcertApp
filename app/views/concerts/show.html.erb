@@ -14,7 +14,7 @@
   <dd><%= @concert.user_id %></dd>
 </dl>
 
-<%= link_to 'Carpool', user_events_path(@user), locals: {carpool:true}, class: 'btn btn-primary' %>
+<%= link_to 'Carpool', user_events_path(@user), class: 'btn btn-primary' %>
 <%= link_to 'Meetup', user_events_path(@user), class: 'btn btn-primary' %>
 
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

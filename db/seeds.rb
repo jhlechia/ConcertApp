@@ -15,16 +15,24 @@ end
   Concert.create(artist: "Artist#{c}", venue: "place#{c}", date: DateTime.now, user_id: 1)
 end
 
-(5..10).each do |c|
+(6..10).each do |c|
   Concert.create(artist: "Artist#{c}", venue: "place#{c}", date: DateTime.now, user_id: 2)
 end
 
 (1..5).each do |car|
-  Event.create(is_carpool: true, location: "place#{car}")
+  Event.create(is_carpool: true, location: "place#{car}", concert_id: 1)
 end
 
-(5..10).each do |meet|
-  Event.create(is_meetup: true, time:DateTime.now, description: "this is the description for event No #{meet}")
+(6..10).each do |car|
+  Event.create(is_carpool: true, location: "place#{car}", concert_id: 2)
+end
+
+(11..15).each do |meet|
+  Event.create(is_meetup: true, time:DateTime.now, description: "this is the description for event No #{meet}", concert_id: 1)
+end
+
+(16..20).each do |meet|
+  Event.create(is_meetup: true, time:DateTime.now, description: "this is the description for event No #{meet}", concert_id: 2)
 end
 
 Message.create(body:"blah", event_id:1)

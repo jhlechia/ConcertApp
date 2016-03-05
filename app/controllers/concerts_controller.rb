@@ -12,8 +12,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     # render json: params
-    # @concert.user_id = params[:id]
-    # @user = User.find(params[:id])
+    @concert.user_id = params[:id]
+    @user = User.find(params[:id])
   end
 
   # GET /concerts/new

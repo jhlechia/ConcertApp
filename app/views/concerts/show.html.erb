@@ -14,10 +14,10 @@
   <dd><%= @concert.user_id %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              user_concerts_path, :class => 'btn btn-default'  %>
+
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_concert_path(@concert), :class => 'btn btn-default' %>
+
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               concert_path(@concert),
               :method => 'delete',

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @concerts = Concert.where(user_id: @user.id)
+    # user = User.find_by(email: 'user1@email.com')
+    #   @current_user ||= User.find_by(id: log_in(user))
   end
 
   # GET /users/new

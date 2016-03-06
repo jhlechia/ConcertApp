@@ -4,7 +4,9 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @event = Event.find_by(id: params[:user_id])
+    @messages = Message.where(event_id: @event.id)
+
   end
 
   # GET /messages/1
@@ -15,6 +17,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @message.event = params[:user_id]
+    @message.event.concert.user.id = params[:format]
   end
 
   # GET /messages/1/edit

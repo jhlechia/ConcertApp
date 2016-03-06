@@ -1,6 +1,17 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Rihanna&country_iso=us&format=json')
+    @json = JSON.parse(@response.body).with_indifferent_access
+
+    @json['response']['gigs'].each do |item|
+      p item['name']
+      p item['venue']['name']
+      p item['venue']['location']['city']
+    end
+  end
+
   # GET /concerts
   # GET /concerts.json
   def index
@@ -22,17 +33,6 @@ class ConcertsController < ApplicationController
     @user = User.find(params[:user_id])
     @concert = Concert.new
     @concerts = Concert.all
-    # render json: @concerts
-
-    # @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Rihanna&country_iso=us&format=json')
-    # @json = JSON.parse(@response.body).with_indifferent_access
-    #
-    # @json['response']['gigs'].each do |item|
-    #   p item['name']
-    #   p item['venue']['name']
-    #   p item['venue']['location']['city']
-    # end
-
   end
 
   # GET /concerts/1/edit

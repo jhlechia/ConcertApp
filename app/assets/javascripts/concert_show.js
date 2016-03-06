@@ -1,5 +1,5 @@
 $(document).on('page-change', function(){
-  $( "tr" ).hover(
+  $( "tr onclick" ).hover(
     function() {
       $( this ).addClass( "hover" );
     }, function() {

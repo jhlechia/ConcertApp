@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'login', to: 'static#home'
   post 'login', to: 'sessions#create'
 
+  get 'search_concerts', to: 'concerts#search'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     # @events = Event.all
+    # render json: params
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
     if (params[:format] == 'carpool')

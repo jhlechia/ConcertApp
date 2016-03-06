@@ -1,5 +1,4 @@
 class ConcertsController < ApplicationController
-  include SessionsHelper
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   # GET /concerts
@@ -12,8 +11,9 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     # render json: params
-    @concert.user_id = params[:id]
-    @user = User.find(params[:id])
+    # @concert.user_id = params[:user_id]
+    @user = User.find(@concert.user_id)
+    puts @user.inspect
     @carpool = "carpool"
   end
 
@@ -21,7 +21,6 @@ class ConcertsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @concert = Concert.new
-    @concert.user_id = params[:user_id]
     @concerts = Concert.all
     # render json: @concerts
   end
@@ -34,6 +33,7 @@ class ConcertsController < ApplicationController
   # POST /concerts.json
   def create
     @concert = Concert.new(concert_params)
+    @concert.user_id = params[:user_id]
 
     respond_to do |format|
       if @concert.save

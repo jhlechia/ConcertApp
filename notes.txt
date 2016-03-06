@@ -21,3 +21,10 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
            new_user_concert_path(@user),
            :class => 'btn btn-primary' %>
+
+ //
+ // $(document).on('page-change', function(){
+ //   $("tr[data-link]").click(function(){
+ //   window.location = this.dataset.link;
+ //   });
+ // });

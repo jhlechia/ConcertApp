@@ -23,6 +23,9 @@ class ConcertsController < ApplicationController
     @concert = Concert.new
     @concerts = Concert.all
     # render json: @concerts
+
+    @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Adele&format=json')
+
   end
 
   # GET /concerts/1/edit

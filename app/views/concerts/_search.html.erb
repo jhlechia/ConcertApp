@@ -1,1 +1,17 @@
 <h1><mark>I own your soul!</mark></h1>
+<div id="stock-lookup">
+  <h3>Search for Concerts</h3>
+  <%= form_tag search_concerts_path, remote: true, method: :get, id: 'concert-lookup-form' do %>
+    <div class="form-group row no-padding text-center col-md-12">
+      <div class="col-md-10">
+        <%= text_field_tag :artist, params[:artist], placeholder: "Search by Artist", autofocus: true, class: "form-control search-box input-lg" %>
+      </div>
+        <%= button_tag(type: :submit, class: "btn btn-md btn-success") do %>
+          <i class="fa fa-search"></i> Look up Concerts
+        <% end %>
+    </div>
+  <% end %>
+  <%= render 'common/spinner' %>
+
+  <div id="concert-lookup-errors"></div>
+</div>

@@ -12,15 +12,11 @@
   </thead>
   <tbody>
     <% @concerts.each do |concert| %>
-      <!-- <tr data-link="<%= concert_path(concert) %>"> -->
-        <td><%= link_to concert.artist, concert_path(concert, @user) %></td>
-        <td><%= concert.venue %></td>
-        <td><%= concert.date %></td>
-      </tr>
+      <tr onclick="location.href='<%= concert_path(concert) %>'">
+          <td><%= concert.artist %></td>
+          <td><%= concert.venue %></td>
+          <td><%= concert.date %></td>
+        </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_concert_path(@user),
-            :class => 'btn btn-primary' %>

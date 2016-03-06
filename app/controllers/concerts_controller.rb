@@ -24,7 +24,14 @@ class ConcertsController < ApplicationController
     @concerts = Concert.all
     # render json: @concerts
 
-    @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Adele&format=json')
+    # @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Rihanna&country_iso=us&format=json')
+    # @json = JSON.parse(@response.body).with_indifferent_access
+    #
+    # @json['response']['gigs'].each do |item|
+    #   p item['name']
+    #   p item['venue']['name']
+    #   p item['venue']['location']['city']
+    # end
 
   end
 

@@ -35,6 +35,13 @@ end
   Event.create(is_meetup: true, time:DateTime.now, description: "this is the description for event No #{meet}", concert_id: 2)
 end
 
+Message.create(body:"blah", event_id:1)
+Message.create(body:"blah", event_id:1)
+Message.create(body:"blah", event_id:2)
+Message.create(body:"blah", event_id:2)
+Message.create(body:"blah", event_id:3)
+Message.create(body:"blah", event_id:3)
+
 Message.create(body:"blah", event_id:16)
 Message.create(body:"blah", event_id:16)
 Message.create(body:"blah", event_id:17)

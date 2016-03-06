@@ -22,7 +22,11 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    # render json: params
+    @user = User.find(params[:user_id])
     @event = Event.new
+    # @event.concert.user = params[:user_id]
+    # render json: @event
   end
 
   # GET /events/1/edit

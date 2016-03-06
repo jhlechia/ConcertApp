@@ -1,11 +1,15 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+
+// Renders the map
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 26.128, lng: -80.147},
     zoom: 13
   });
 
+
+// Geolocation. Sets map to user's geolocation
 var infoWindow = new google.maps.InfoWindow({map: map});
 
 if (navigator.geolocation) {

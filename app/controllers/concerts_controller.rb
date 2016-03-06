@@ -1,7 +1,12 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
+  def self.find_by_artist(artist_name)
+
+  end
+
   def search
+    render json: params
     # @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist=Rihanna&country_iso=us&format=json')
     # @json = JSON.parse(@response.body).with_indifferent_access
     #

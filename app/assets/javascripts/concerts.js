@@ -7,5 +7,16 @@ init_stock_lookup = function(){
     show_spinner();
   });
 
+  $('#stock-lookup-form').on('ajax:after',function(){
+    hide_spinner();
+  });
 
 }
+
+
+$(document).ready(function(){
+
+  init_stock_lookup();
+
+
+})

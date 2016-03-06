@@ -1,5 +1,4 @@
 class ConcertsController < ApplicationController
-  include SessionsHelper
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   # GET /concerts

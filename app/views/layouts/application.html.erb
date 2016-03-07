@@ -50,8 +50,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "My Profile", user_path(current_user.id) %></li>
-            <li><%= link_to "#{@current_concert}", "/path2"  %></li>
-            <li><%= link_to "Log Out"  %></li>
+            <li><%= link_to "Logout", :controller=> "sessions", :action=> "destroy" %></li>
           </ul>
         </div>
       </div>

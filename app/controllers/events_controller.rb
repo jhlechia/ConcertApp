@@ -39,7 +39,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.is_meetup = true
+    @event.concert_id = params[:user_id]
     respond_to do |format|
       if @event.save
         format.html { redirect_to user_events_path(params[:user_id]), notice: 'Event was successfully created.' }

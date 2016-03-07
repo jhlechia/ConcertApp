@@ -19,21 +19,6 @@
       </div>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :is_carpool, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :is_carpool, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:is_carpool) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :is_meetup, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :is_meetup, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:is_meetup) %>
-  </div>
   <div class="form-group">
     <%= f.label :time, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -56,16 +41,8 @@
     <%=f.error_span(:description) %>
   </div>
   <div class="form-group">
-    <%= f.label :concert_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :concert_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:concert_id) %>
-  </div>
-
-  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 user_events_path, :class => 'btn btn-default' %>
     </div>

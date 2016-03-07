@@ -31,3 +31,7 @@
   width: auto;
   margin-right: 0;
 }
+
+.modal-content {
+  padding: 5%;
+}

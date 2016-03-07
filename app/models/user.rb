@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :concerts
   validates :username, presence: true, uniqueness: {case_sensitive: false}, length: {minimum: 3, maximum: 20}
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-c\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length {maximum: 40}, format: {with: VALID_EMAIL_REGEX}
+  validates :email, presence: true, length: {maximum: 40}
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

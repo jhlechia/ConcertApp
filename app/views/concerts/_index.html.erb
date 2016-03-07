@@ -16,6 +16,9 @@
           <td><%= concert.artist %></td>
           <td><%= concert.venue %></td>
           <td><%= concert.date %></td>
+          <% unless @hide_going_button %>
+          <td><%= link_to 'Going', user_path(current_user.id), class: 'btn btn-default btn-xs'  %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>

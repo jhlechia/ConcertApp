@@ -2,6 +2,18 @@
 // All this logic will automatically be available in application.js.
 
 // Renders the map
+var neighborhoods = [
+  {lat: 26.138, lng: -80.187},
+  {lat: 26.108, lng: -80.157},
+  {lat: 26.158, lng: -80.147},
+  {lat: 26.168, lng: -80.167},
+  {lat: 26.115, lng: -80.127},
+  {lat: 26.148, lng: -80.137}
+];
+
+var markers = [];
+var map;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 26.128, lng: -80.147},
@@ -18,7 +30,12 @@ if (navigator.geolocation) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+      console.log((pos['lat']));
+      console.log((pos['lng']));
+      window.pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       map.setCenter(pos);
@@ -53,10 +70,40 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
+      console.log((marker['position'].lat()));
+      console.log((marker['position'].lng ()));
+      window.marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+}
+
+function drop() {
+  clearMarkers();
+  for (var i = 0; i < neighborhoods.length; i++) {
+    addMarkerWithTimeout(neighborhoods[i], i * 200);
+  }
+}
+
+function addMarkerWithTimeout(position, timeout) {
+  window.setTimeout(function() {
+    markers.push(new google.maps.Marker({
+      position: position,
+      map: map,
+      animation: google.maps.Animation.DROP
+    }));
+  }, timeout);
+}
+
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
 }
 
 // Reverse Geocode (take lat long, convert to)

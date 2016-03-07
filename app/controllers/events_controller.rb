@@ -10,6 +10,7 @@ class EventsController < ApplicationController
     @events = Event.where(concert_id: @concert.id)
     if (params[:format] == 'carpool')
       @events = @events.where(is_carpool:true)
+      @carpool = true
     else
       @events = @events.where(is_meetup:true)
     end
@@ -41,7 +42,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path(params[:user_id]), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

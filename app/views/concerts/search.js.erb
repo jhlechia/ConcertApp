@@ -9,5 +9,5 @@ $('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["
 hide_spinner();
 
 <% @json['response']['gigs'].each do |item| %>
-$('#concert-lookup-results').append('<tr><td><%= item["venue"]["name"] %></td><td><%= item["venue"]["location"]["city"] %></td><td><%= item["startDate"]%></td><td><%= link_to "Add to my concerts", root_path, class: "btn btn-xs btn-primary", method: :post %></td></tr>');
+  $('#concert-lookup-results').append('<tr><td><%= item["venue"]["name"] %></td><td><%= item["venue"]["location"]["city"] %></td><td><%= item["startDate"].to_time.strftime("%A, %b %d at %I %p")%></td><td><%= link_to "Add to my concerts", root_path, class: "btn btn-xs btn-primary", method: :post %></td></tr>');
 <% end %>

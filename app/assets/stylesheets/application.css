@@ -39,3 +39,7 @@
 #concert-lookup-results {
   display:none;
 }
+
+.well.results-block {
+  display:flex;
+}

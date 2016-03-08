@@ -43,3 +43,7 @@
 .well.results-block {
   display:flex;
 }
+
+#search-submit {
+  margin:10px;
+}

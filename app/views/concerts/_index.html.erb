@@ -16,7 +16,7 @@
       <tr onclick="location.href='<%= concert_path(concert) %>'">
           <td><%= concert.artist %></td>
           <td><%= concert.venue %></td>
-          <td><%= concert.date.strftime("%A, %b %d at %I %p").downcase %></td>
+          <td><%= concert.date.strftime("%A, %b %d at %I %p")%></td>
         </tr>
       <% end %>
     </tbody>

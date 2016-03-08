@@ -20,7 +20,11 @@
             <td><%= event.id %></td>
             <td><%= event.is_carpool %></td>
             <td><%= event.is_meetup %></td>
-            <td><%= event.time %></td>
+            <% if event.time %>
+              <td><%= event.time.strftime("%I:%M%p").downcase %></td>
+              <% else %>
+              <td><%= event.time %></td>
+            <% end %>
             <td><%= event.location %></td>
             <td><%= event.description %></td>
             <td><%= event.concert_id %></td>

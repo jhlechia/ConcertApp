@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
   <dd><%= @concert.venue %></dd>
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-  <dd><%= @concert.date %></dd>
+  <dd><%= @concert.date.strftime("%A, %b %d at %I %p").downcase %></dd>
 </dl>
 
 <%= link_to 'Carpool', user_events_path(@concert, @carpool), class: 'btn btn-primary' %>

@@ -21,8 +21,8 @@
   <% end %>
   <div class="form-group">
     <%= f.label :time, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :time, :class => 'form-control' %>
+    <div class="col-md-10">
+      <%= f.time_select :time, {ampm: true, minute_step: 15} %>
     </div>
     <%=f.error_span(:time) %>
   </div>

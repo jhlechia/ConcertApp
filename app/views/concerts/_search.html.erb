@@ -4,7 +4,7 @@
     <div class="col-md-10">
       <%= text_field_tag :artist_name, params[:artist], placeholder: "Search by Artist", autofocus: true, class: "form-control search-box input-lg" %>
     </div>
-    <%= button_tag(type: :submit, class: "btn btn-md btn-success") do %>
+    <%= button_tag(type: :submit, class: "btn btn-md btn-primary") do %>
       <i class="fa fa-search"></i> Look up Concerts
     <% end %>
   </div>
@@ -12,11 +12,8 @@
 <%= render 'common/spinner' %>
 
 <div  class="well results-block">
-  <table style="width:100%" id="stock-lookup-results">
-    <tr>
-      <th>Venue</th>
-      <th>City</th>
-    </tr>
+  <table style="width:100%" id="concert-lookup-results" class="table table-striped table-hover">
+
 
   </table>
 </div>

@@ -2,8 +2,12 @@
 // alert("<%= j (@json['response']['gigs'][0]['venue']['name']) %>");
 
 // $('#stock-lookup-results').append("<p>Test</p>");
-$('#stock-lookup-results').show().append("")
+$('#artist_name').val("");
+
+$('#concert-lookup-results').show().append('<tr><th>Venue</th><th>City</th><th></th></tr>')
+
+hide_spinner();
 
 <% @json['response']['gigs'].each do |item| %>
-$('#stock-lookup-results').append("<tr><td><%= item['venue']['name'] %></td><td><%= item['venue']['location']['city'] %></td></tr>");
+$('#concert-lookup-results').append('<tr><td><%= item["venue"]["name"] %></td><td><%= item["venue"]["location"]["city"] %></td><td><%= link_to "Add to my concerts", root_path, class: "btn btn-xs btn-primary", method: :post %></td></tr>');
 <% end %>

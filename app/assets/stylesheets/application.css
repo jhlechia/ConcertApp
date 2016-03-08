@@ -35,3 +35,7 @@
 .modal-content {
   padding: 5%;
 }
+
+#stock-lookup-results {
+  display:none;
+}

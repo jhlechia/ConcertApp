@@ -1,0 +1,9 @@
+
+// alert("<%= j (@json['response']['gigs'][0]['venue']['name']) %>");
+
+// $('#stock-lookup-results').append("<p>Test</p>");
+$('#stock-lookup-results').show().append("")
+
+<% @json['response']['gigs'].each do |item| %>
+$('#stock-lookup-results').append("<tr><td><%= item['venue']['name'] %></td><td><%= item['venue']['location']['city'] %></td></tr>");
+<% end %>

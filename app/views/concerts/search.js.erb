@@ -4,7 +4,7 @@
 // $('#stock-lookup-results').append("<p>Test</p>");
 $('#artist_name').val("");
 
-$('#concert-lookup-results').show().append('<tr><th>Venue</th><th>City</th><th></th><th>Date</th></tr>')
+$('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["gigs"][0]["name"] %></h2></caption><tr><th>Venue</th><th>City</th><th>Date</th><th></th></tr>')
 
 hide_spinner();
 

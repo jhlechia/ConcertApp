@@ -70,8 +70,22 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
-      console.log((marker['position'].lat()));
-      console.log((marker['position'].lng ()));
+      console.log("hi")
+      console.log(marker['position'].lat());
+      console.log(marker['position'].lng());
+
+      $("#location_lat").val(marker['position'].lat());
+      $("#location_lng").val(marker['position'].lng());
+      $("#latlng").val(marker['position'].lat()+ ","+ marker['position'].lng());
+      var input = document.getElementById('latlng').value;
+      var latlngStr = input.split(',', 2);
+      console.log(latlngStr);
+      var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+      console.log(latlng);
+      geocoder.geocode({'location': latlng}, function(results) {
+        console.log(results[1].formatted_address);
+      });
+
       window.marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location
@@ -104,6 +118,29 @@ function clearMarkers() {
     markers[i].setMap(null);
   }
   markers = [];
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  var input = document.getElementById('latlng').value;
+  var latlngStr = input.split(',', 2);
+  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        map.setZoom(11);
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+        });
+        infowindow.setContent(results[1].formatted_address);
+        infowindow.open(map, marker);
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
+  });
 }
 
 // Reverse Geocode (take lat long, convert to)

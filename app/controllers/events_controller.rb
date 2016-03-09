@@ -29,6 +29,11 @@ class EventsController < ApplicationController
     # render json: params
     @user = User.find(params[:user_id])
     @event = Event.new
+    if params[:format] == 'carpool'
+      @event.is_carpool == true
+    else
+      @event.is_meetup == true
+    end
     # @event.concert.user = params[:user_id]
     # render json: @event
   end
@@ -40,6 +45,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    render json: params
     @event = Event.new(event_params)
 
     if params[:carpool]
@@ -49,15 +55,15 @@ class EventsController < ApplicationController
     end
     @carpool = params[:carpool]
     @event.concert_id = params[:user_id]
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to user_events_path(params[:user_id], @carpool), notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+      # if @event.save
+      #   format.html { redirect_to user_events_path(params[:user_id], @carpool), notice: 'Event was successfully created.' }
+      #   format.json { render :show, status: :created, location: @event }
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @event.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   # PATCH/PUT /events/1

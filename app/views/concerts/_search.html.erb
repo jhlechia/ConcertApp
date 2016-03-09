@@ -4,6 +4,7 @@
     <div class="form-group row no-padding text-center col-md-12">
       <div class="col-md-8 col-md-offset-2" >
         <%= text_field_tag :artist_name, params[:artist], placeholder: "Search by Artist", autofocus: true, class: "form-control search-box input-lg" %>
+        <input type="hidden" name="user_id" value="<%= params[:user_id]%>" >
       </div>
       <%= button_tag(type: :submit, class: "btn btn-md btn-primary",id: "search-submit") do %>
         <i class="fa fa-search"></i> Look up Concerts

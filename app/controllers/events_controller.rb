@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     # @events = Event.all
-    # render json: params
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
     @event = Event.find_by(concert_id: @concert.id)
@@ -42,11 +41,17 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.is_meetup = true
+
+    if params[:carpool]
+      @event.is_carpool = true
+    else
+      @event.is_meetup = true
+    end
+    @carpool = params[:carpool]
     @event.concert_id = params[:user_id]
     respond_to do |format|
       if @event.save
-        format.html { redirect_to user_events_path(params[:user_id]), notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path(params[:user_id], @carpool), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

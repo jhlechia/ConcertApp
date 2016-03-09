@@ -8,13 +8,14 @@
     <input id="address" type="textbox" value="">
     <input type="hidden" name="id" value="<%= @concert.id %>">
     <input type="hidden" name="user_id" value="<%=params[:user_id]%>">
-    <input name="carpool" value="carpool">
+    <input type="hidden" name="carpool" value="carpool">
+
     <%= f.submit 'Submit', :id => "submit" %>
 <!-- Reverse geocode -->
     <!-- <input id="latlng" type="text" value="40.714224,-73.961452">
     <input id="submit" type="button" value="Reverse Geocode"> -->
   </div>
-  <%= f.hidden_field :location %>
+ <%= f.text_field :location %>
   <div id='map'></div>
 </div>
 

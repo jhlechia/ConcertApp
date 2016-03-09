@@ -1,0 +1,27 @@
+<div class="concert-index">
+<%- model_class = Concert -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:artist) %></th>
+      <th><%= model_class.human_attribute_name(:venue) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @concerts.each do |concert| %>
+      <tr>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.artist %></td>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.venue %></td>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
+          <% unless @hide_add_to_concerts %>
+          <td><%= link_to 'Add_to_Concerts', user_path(@user), class: 'btn btn-primary btn-xs' %></td>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

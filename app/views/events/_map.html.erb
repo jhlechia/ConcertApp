@@ -1,0 +1,24 @@
+<%= form_for ([@user, @event]), url: {action: "create"}, html: {:method => :post} do |f| %>
+<br/>
+<h1>MAP</h1>
+<h5>Here are the carpools in your area! If you'd like to carpool, enter your pickup location below.</h5>
+<div id='map-container'>
+  <div id="floating-panel">
+    <button id="drop" onclick="drop()">See Carpools</button>
+    <input id="address" type="textbox" value="">
+    <input type="hidden" name="id" value="<%= @concert.id %>">
+    <input type="hidden" name="user_id" value="<%=params[:user_id]%>">
+    <input name="carpool" value="carpool">
+    <%= f.submit 'Submit', :id => "submit" %>
+<!-- Reverse geocode -->
+    <!-- <input id="latlng" type="text" value="40.714224,-73.961452">
+    <input id="submit" type="button" value="Reverse Geocode"> -->
+  </div>
+  <%= f.hidden_field :location %>
+  <div id='map'></div>
+</div>
+
+<% end %>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2J6ZL433xkOnMv5zhsr7sQkGg4TYP0Dg&callback=initMap"
+async defer>
+</script>

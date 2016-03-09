@@ -1,0 +1,94 @@
+
+<h1 id="login">Log In</h1>
+
+<div id="lgin" class="container">
+  <div id="lgin" class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class:"form-control" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class:"form-control" %>
+      <br>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span> Remember me on this computer</span>
+      <% end %>
+      <br>
+      <%= f.submit "Log In", class:"btn btn-primary" %>
+    <% end %>
+    <br>
+    <p class="new-user">New user? <%= link_to "Sign up now!", new_user_path, class: "label label-info" %></p>
+  </div>
+</div>
+
+<div id="user-modal" class="modal fade"></div>
+
+
+<button type="button" class="btn btn-info btn-md" id="myBtn">Modal with Overlay (backdrop:true)</button>
+
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+
+          <% if @user.errors.any? %>
+            <div id="error_expl" class="panel panel-danger">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+              </div>
+              <div class="panel-body">
+                <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label :name, :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+              <%= f.text_field :name, :class => 'form-control' %>
+            </div>
+            <%=f.error_span(:name) %>
+          </div>
+          <div class="form-group">
+            <%= f.label :username, :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+              <%= f.text_field :username, :class => 'form-control' %>
+            </div>
+            <%=f.error_span(:username) %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+              <%= f.text_field :email, :class => 'form-control' %>
+            </div>
+            <%=f.error_span(:email) %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+              <%= f.text_field :password, :class => 'form-control', :type => 'password'%>
+            </div>
+            <%=f.error_span(:password) %>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+              <%= f.submit nil, :class => 'btn btn-primary' %>
+              <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              login_path, :class => 'btn btn-default' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>

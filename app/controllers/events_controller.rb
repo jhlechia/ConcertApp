@@ -21,7 +21,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    
+    @user = User.find(@concert.user_id)
+
   end
 
   # GET /events/new

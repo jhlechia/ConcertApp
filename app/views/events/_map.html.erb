@@ -1,3 +1,4 @@
+<%= form_for @event do |f| %>
 <br/>
 <h1>MAP</h1>
 <h5>Here are the carpools in your area! If you'd like to carpool, enter your pickup location below.</h5>
@@ -7,14 +8,18 @@
     <input id="address" type="textbox" value="">
     <input id="submit" type="button" value="Submit carpool address">
 <!-- Reverse geocode -->
-    <input id="latlng" type="text" value="40.714224,-73.961452">
-    <input id="submit" type="button" value="Reverse Geocode">
+    <!-- <input id="latlng" type="text" value="40.714224,-73.961452">
+    <input id="submit" type="button" value="Reverse Geocode"> -->
   </div>
   <div id='map'></div>
 </div>
 
-<input id="location_lat"></input>
-<input id="location_lng"></input>
+<input id="latlng"></input>
+
+
+<%= f.text_field :location, :id => 'latlng' %>
+<%=f.submit :id => "submit" %>
+<% end %>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2J6ZL433xkOnMv5zhsr7sQkGg4TYP0Dg&callback=initMap"
 async defer>

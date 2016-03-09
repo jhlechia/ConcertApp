@@ -74,9 +74,11 @@ function geocodeAddress(geocoder, resultsMap) {
       console.log(marker['position'].lat());
       console.log(marker['position'].lng());
 
-      $("#location_lat").val(marker['position'].lat());
-      $("#location_lng").val(marker['position'].lng());
+      // $("#location_lat").val(marker['position'].lat());
+      // $("#location_lng").val(marker['position'].lng());
+
       $("#latlng").val(marker['position'].lat()+ ","+ marker['position'].lng());
+
       var input = document.getElementById('latlng').value;
       var latlngStr = input.split(',', 2);
       console.log(latlngStr);

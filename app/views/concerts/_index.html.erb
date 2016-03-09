@@ -14,13 +14,11 @@
   <tbody>
     <% @concerts.each do |concert| %>
       <tr>
-          <div onclick="location.href='<%= concert_path(concert) %>'">
-          <td><%= concert.artist %></td>
-          <td><%= concert.venue %></td>
-          <td><%= concert.date.strftime("%A, %b %d at %I %p").downcase %></td>
-          </div>
-          <% unless @hide_going_button %>
-          <td><%= link_to 'Going', user_path(@user), class: 'btn btn-default btn-xs' %></td>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.artist %></td>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.venue %></td>
+          <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
+          <% unless @hide_add_to_concerts %>
+          <td><%= link_to 'Add_to_Concerts', user_path(@user), class: 'btn btn-primary btn-xs' %></td>
           <% end %>
       </tr>
     <% end %>

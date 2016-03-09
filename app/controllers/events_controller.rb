@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     # render json: params
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
+    @event = Event.find_by(concert_id: @concert.id)
     if (params[:format] == 'carpool')
       @events = @events.where(is_carpool:true)
       @carpool = true
@@ -20,6 +21,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @user = User.find(@concert.user_id)
+
   end
 
   # GET /events/new

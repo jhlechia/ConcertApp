@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'search_concerts', to: 'concerts#search'
 
 
+
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

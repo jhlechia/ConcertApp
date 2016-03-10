@@ -84,7 +84,7 @@ class ConcertsController < ApplicationController
   # DELETE /concerts/1.json
   def destroy
     @concert.destroy
-    redirect_to user_path(params[:format]), notice: 'Concert was successfully destroyed.' 
+    redirect_to user_path(params[:format]), notice: 'Concert was successfully deleted.' 
   end
 
   private

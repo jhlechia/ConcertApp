@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    p "WM"*47
+    p "hi"
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       @current_user ||= User.find_by(id: log_in(user))
@@ -18,8 +20,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    p "WM"*47
+    p "bye"
     log_out if logged_in?
     redirect_to root_url
-    #root_path ^
   end
 end

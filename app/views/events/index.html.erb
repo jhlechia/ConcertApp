@@ -43,7 +43,9 @@
     <% end %>
   </tbody>
 </table>
+<% unless @hide_new_meetup_button %>
 <%= link_to 'New Meetup', new_user_event_path(params[:user_id]), class: 'btn btn-primary' %>
+<% end %>
 
 <% if @carpool %>
   <%= render 'map' %>

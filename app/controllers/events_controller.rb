@@ -35,8 +35,6 @@ class EventsController < ApplicationController
       @event.is_meetup == true
     end
 
-    # @event.concert.user = params[:user_id]
-    # render json: @event
   end
 
   # GET /events/1/edit

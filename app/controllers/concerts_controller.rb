@@ -55,7 +55,7 @@ class ConcertsController < ApplicationController
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
+        format.html { redirect_to @concert, notice: 'Concert was successfully added.' }
         format.json { render :show, status: :created, location: @concert }
       else
         format.html { render :new }

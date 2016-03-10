@@ -53,9 +53,24 @@
   $(document).ready(function(){
     console.log("hi")
     $("#confirm_button").hide();
+
     $("#submit").click(function() {
       $("#confirm_button").show();
       $("#submit").hide();
+    });
+    
+    $(".removeOnFocus").each(function(){
+      this.data = new Object(); //TODO don't overwrite previous data
+       this.data.value = this.value;
+
+       $(this).focus(function(){
+           if (this.value == this.data.value)
+               this.value = '';
+       });
+       $(this).blur(function(){
+           if (this.value == '')
+               this.value = this.data.value;
+       });
     });
   });
 </script>

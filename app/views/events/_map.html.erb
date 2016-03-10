@@ -5,11 +5,11 @@
 <div id='map-container'>
   <div id="floating-panel">
     <button id="drop" onclick="drop()">See Carpools</button>
-    <input id="address" type="textbox" value="">
+    <input id="address" class="removeOnFocus"type="textbox" value="Enter Address">
     <input type="hidden" name="id" value="<%= @concert.id %>">
     <input type="hidden" name="user_id" value="<%=params[:user_id]%>">
     <input type="hidden" name="carpool" value="carpool">
-    <input id="submit" type="button" value="Submit carpool address">
+    <input id="submit" type="button" value="Submit Address">
     <%= f.submit 'Confirm Pin', :id => 'confirm_button'%>
 
   </div>

@@ -48,18 +48,14 @@ class ConcertsController < ApplicationController
   def create
     @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], user_id:params[:user_id])
     @concerts = Concert.all
-    puts "-_"*70
-    p @concert.venue
-    p @concert.date
-    p @concert.user_id
+    @user = User.find(params[:user_id])
+
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @concert, notice: 'Concert was successfully added.' }
-        format.json { render :show, status: :created, location: @concert }
+        format.html { redirect_to @user, notice: 'Concert was successfully added.' }
       else
         format.html { render :new }
-        format.json { render json: @concert.errors, status: :unprocessable_entity }
       end
     end
   end

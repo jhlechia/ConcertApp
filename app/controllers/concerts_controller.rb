@@ -7,6 +7,7 @@ class ConcertsController < ApplicationController
 
   def search
   artist = params[:artist_name].gsub(" ","+")
+  @user = User.find(params[:user_id])
   @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
   @json = JSON.parse(@response.body).with_indifferent_access
 
@@ -15,6 +16,10 @@ class ConcertsController < ApplicationController
   #   p item['venue']['name']
   #   p item['venue']['location']['city']
   # end
+  puts "_-"*44
+  p @json['response']['gigs'][0]['name']
+  p params
+
   end
 
   # GET /concerts
@@ -37,6 +42,7 @@ class ConcertsController < ApplicationController
     @user = User.find(params[:user_id])
     @concert = Concert.new
     @concerts = Concert.all
+    @hide_buttons = true
   end
 
   # GET /concerts/1/edit
@@ -46,16 +52,16 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
-    @concert = Concert.new(concert_params)
-    @concert.user_id = params[:user_id]
+    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], user_id:params[:user_id])
+    @concerts = Concert.all
+    @user = User.find(params[:user_id])
+
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
-        format.json { render :show, status: :created, location: @concert }
+        format.html { redirect_to @user, notice: 'Concert was successfully added.' }
       else
         format.html { render :new }
-        format.json { render json: @concert.errors, status: :unprocessable_entity }
       end
     end
   end

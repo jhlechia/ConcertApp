@@ -18,8 +18,13 @@
           <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.venue %></td>
           <td href onclick="location.href='<%= concert_path(concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
           <% unless @hide_add_to_concerts %>
-          <td><%= link_to 'Add_to_Concerts', user_path(@user), class: 'btn btn-primary btn-xs' %></td>
+          <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
           <% end %>
+          <% unless @hide_buttons %>
+          <td><i class="fa fa-car"></i></td>
+          <td><i class="fa fa-users"></i></td>
+          <% end %>
+
       </tr>
     <% end %>
   </tbody>

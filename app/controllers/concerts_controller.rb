@@ -12,7 +12,7 @@ class ConcertsController < ApplicationController
 
   # @json['response']['gigs'].each do |item|
   #   p item['name']
-    p item['venue']['name']
+  #   p item['venue']['name']
   #   p item['venue']['location']['city']
   # end
   end
@@ -27,8 +27,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     # render json: params
+    # @concert.user_id = params[:user_id]
     @user = User.find(@concert.user_id)
-    puts @user.inspect
     @carpool = "carpool"
   end
 

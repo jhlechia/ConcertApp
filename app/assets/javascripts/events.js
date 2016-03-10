@@ -1,5 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+var markerPick = '/assets/marker_40px.png';
 
 // Renders the map
 function initMap() {
@@ -54,7 +55,6 @@ function geocodeAddress(geocoder, resultsMap) {
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
-      var markerPick = '/assets/marker_40px.png';
       var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location,
@@ -112,7 +112,8 @@ function addMarkerWithTimeout(position, timeout) {
     markers.push(new google.maps.Marker({
       position: position,
       map: map,
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
+      icon: markerPick
     }));
   }, timeout);
 }

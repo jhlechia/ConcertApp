@@ -1,5 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+
 var markerPick = '/assets/marker_40px.png';
 
 // Renders the map
@@ -89,18 +90,34 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 var neighborhoods = [
-  {lat: 26.138, lng: -80.187},
-  {lat: 26.108, lng: -80.157},
-  {lat: 26.158, lng: -80.147},
-  {lat: 26.168, lng: -80.167},
-  {lat: 26.115, lng: -80.127},
-  {lat: 26.148, lng: -80.137}
+  // {lat: 26.138, lng: -80.187},
+  // {lat: 26.108, lng: -80.157},
+  // {lat: 26.158, lng: -80.147},
+  // {lat: 26.168, lng: -80.167},
+  // {lat: 26.115, lng: -80.127},
+  // {lat: 26.148, lng: -80.137}
+
 ];
 
 var markers = [];
 var map;
 
 function drop() {
+  test = [];
+  var latCollection = [];
+  var lngCollection = [];
+  console.log($('.lats'));
+  $('.lats').each (function(){
+    latCollection.push(parseFloat($(this).html()));
+  });
+  console.log(latCollection);
+  $('.lngs').each (function(){
+    lngCollection.push(parseFloat($(this).html()));
+  });
+  console.log(lngCollection);
+  neighborhoods.push({lat: latCollection[10], lng: lngCollection[10]});
+
+
   clearMarkers();
   for (var i = 0; i < neighborhoods.length; i++) {
     addMarkerWithTimeout(neighborhoods[i], i * 200);

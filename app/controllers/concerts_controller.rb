@@ -11,6 +11,11 @@ class ConcertsController < ApplicationController
   @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
   @json = JSON.parse(@response.body).with_indifferent_access
 
+  # @json['response']['gigs'].each do |item|
+  #   p item['name']
+  #   p item['venue']['name']
+  #   p item['venue']['location']['city']
+  # end
   puts "_-"*44
   p @json['response']['gigs'][0]['name']
   p params
@@ -27,8 +32,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     # render json: params
+    # @concert.user_id = params[:user_id]
     @user = User.find(@concert.user_id)
-    puts @user.inspect
     @carpool = "carpool"
   end
 

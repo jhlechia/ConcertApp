@@ -2,18 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 // Renders the map
-var neighborhoods = [
-  {lat: 26.138, lng: -80.187},
-  {lat: 26.108, lng: -80.157},
-  {lat: 26.158, lng: -80.147},
-  {lat: 26.168, lng: -80.167},
-  {lat: 26.115, lng: -80.127},
-  {lat: 26.148, lng: -80.137}
-];
-
-var markers = [];
-var map;
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 26.128, lng: -80.147},
@@ -66,18 +54,20 @@ function geocodeAddress(geocoder, resultsMap) {
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
+      var markerPick = '/assets/marker_40px.png';
       var marker = new google.maps.Marker({
         map: resultsMap,
-        position: results[0].geometry.location
+        position: results[0].geometry.location,
+        icon: markerPick
       });
+      // marker = marker.setOptions({'opacity': 0.5});
+
       console.log("hi")
       console.log(marker['position'].lat());
       console.log(marker['position'].lng());
 
-      // $("#location_lat").val(marker['position'].lat());
-      // $("#location_lng").val(marker['position'].lng());
-
       $("#event_location").val(marker['position'].lat()+ ","+ marker['position'].lng());
+
 
       var input = document.getElementById('event_location').value;
       var latlngStr = input.split(',', 2);
@@ -97,6 +87,18 @@ function geocodeAddress(geocoder, resultsMap) {
     }
   });
 }
+
+var neighborhoods = [
+  {lat: 26.138, lng: -80.187},
+  {lat: 26.108, lng: -80.157},
+  {lat: 26.158, lng: -80.147},
+  {lat: 26.168, lng: -80.167},
+  {lat: 26.115, lng: -80.127},
+  {lat: 26.148, lng: -80.137}
+];
+
+var markers = [];
+var map;
 
 function drop() {
   clearMarkers();
@@ -120,29 +122,6 @@ function clearMarkers() {
     markers[i].setMap(null);
   }
   markers = [];
-}
-
-function geocodeLatLng(geocoder, map, infowindow) {
-  var input = document.getElementById('latlng').value;
-  var latlngStr = input.split(',', 2);
-  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-  geocoder.geocode({'location': latlng}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      if (results[1]) {
-        map.setZoom(11);
-        var marker = new google.maps.Marker({
-          position: latlng,
-          map: map
-        });
-        infowindow.setContent(results[1].formatted_address);
-        infowindow.open(map, marker);
-      } else {
-        window.alert('No results found');
-      }
-    } else {
-      window.alert('Geocoder failed due to: ' + status);
-    }
-  });
 }
 
 // Reverse Geocode (take lat long, convert to)

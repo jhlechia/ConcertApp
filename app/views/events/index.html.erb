@@ -48,3 +48,14 @@
 <% if @carpool %>
   <%= render 'map' %>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    console.log("hi")
+    $("#confirm_button").hide();
+    $("#submit").click(function() {
+      $("#confirm_button").show();
+      $("#submit").hide();
+    });
+  });
+</script>

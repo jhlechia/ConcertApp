@@ -1,8 +1,10 @@
-
+console.log(" I REALLY GOT HERE");
 $('#artist_name').val("");
 
-$('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["gigs"][0]["name"] %></h2></caption><tr><th>Venue</th><th>City</th><th>Date</th><th></th></tr>')
+<% if !@json["response"]["gigs"][0]["name"].nil? %>
 
+  $('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["gigs"][0]["name"] %></h2></caption><tr><th>Venue</th><th>City</th><th>Date</th><th></th></tr>')
+<% end %>
 hide_spinner();
 
 

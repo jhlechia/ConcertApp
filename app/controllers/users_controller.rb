@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if @user.save
         redirect_to @user, notice: 'User was successfully created.'
       else
-        redirect_to root_path, alert: "Sorry, the information you provided is incorrect."
+        redirect_to root_path, alert: "Sorry, the information you provided is incorrect. Please try again."
       end
 
   end

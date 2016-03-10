@@ -18,14 +18,11 @@
       <%= f.submit "Log In", class:"btn btn-primary" %>
     <% end %>
     <br>
-    <p class="new-user">New user? <%= link_to "Sign up now!", new_user_path, class: "label label-info" %></p>
+    <p class="new-user">New user? <button type="button" class="label label-info" id="myBtn">Sign up now!</button>
   </div>
 </div>
 
 <div id="user-modal" class="modal fade"></div>
-
-
-<button type="button" class="btn btn-info btn-md" id="myBtn">Modal with Overlay (backdrop:true)</button>
 
 
 
@@ -33,7 +30,7 @@
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
         <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
 
           <% if @user.errors.any? %>
@@ -83,8 +80,12 @@
           <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
               <%= f.submit nil, :class => 'btn btn-primary' %>
+
               <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-              login_path, :class => 'btn btn-default' %>
+              login_path, :class => 'btn btn-default', "data-dismiss" => "modal" %>
+
+
+
             </div>
           </div>
         <% end %>

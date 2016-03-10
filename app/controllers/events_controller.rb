@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     if (params[:format] == 'carpool')
       @events = @events.where(is_carpool:true)
       @carpool = true
+      @hide_new_meetup_button = true
     else
       @events = @events.where(is_meetup:true)
     end

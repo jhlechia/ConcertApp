@@ -79,10 +79,7 @@ class ConcertsController < ApplicationController
   # DELETE /concerts/1.json
   def destroy
     @concert.destroy
-    respond_to do |format|
-      format.html { redirect_to concerts_url, notice: 'Concert was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(params[:format]), notice: 'Concert was successfully destroyed.' 
   end
 
   private

@@ -29,14 +29,12 @@ class EventsController < ApplicationController
     # render json: params
     @user = User.find(params[:user_id])
     @event = Event.new
-<<<<<<< HEAD
     if params[:format] == 'carpool'
       @event.is_carpool == true
     else
       @event.is_meetup == true
     end
-=======
->>>>>>> 9f1a4096ffd243d13c7b3dc365889920f67784d8
+
     # @event.concert.user = params[:user_id]
     # render json: @event
   end

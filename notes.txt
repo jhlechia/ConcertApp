@@ -28,3 +28,6 @@
  //   window.location = this.dataset.link;
  //   });
  // });
+
+
+ <%= render 'concerts/index' %>

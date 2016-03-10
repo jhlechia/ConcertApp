@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     else
       @event.is_meetup == true
     end
+
   end
 
   # GET /events/1/edit

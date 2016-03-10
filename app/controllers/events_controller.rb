@@ -12,6 +12,7 @@ class EventsController < ApplicationController
       @events = @events.where(is_carpool:true)
       @carpool = true
       @hide_new_meetup_button = true
+      @hide_carpool_list = true
     else
       @events = @events.where(is_meetup:true)
     end

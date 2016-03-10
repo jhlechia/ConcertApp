@@ -20,6 +20,11 @@
           <% unless @hide_add_to_concerts %>
           <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
           <% end %>
+          <% unless @hide_buttons %>
+          <td><i class="fa fa-car"></i></td>
+          <td><i class="fa fa-users"></i></td>
+          <% end %>
+
       </tr>
     <% end %>
   </tbody>

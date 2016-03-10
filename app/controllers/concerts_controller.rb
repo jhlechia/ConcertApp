@@ -37,6 +37,7 @@ class ConcertsController < ApplicationController
     @user = User.find(params[:user_id])
     @concert = Concert.new
     @concerts = Concert.all
+    @hide_buttons = true
   end
 
   # GET /concerts/1/edit

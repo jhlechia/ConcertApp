@@ -11,6 +11,11 @@ class ConcertsController < ApplicationController
   @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
   @json = JSON.parse(@response.body).with_indifferent_access
 
+  # @json['response']['gigs'].each do |item|
+  #   p item['name']
+  #   p item['venue']['name']
+  #   p item['venue']['location']['city']
+  # end
   puts "_-"*44
   p @json['response']['gigs'][0]['name']
   p params
@@ -27,8 +32,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     # render json: params
+    # @concert.user_id = params[:user_id]
     @user = User.find(@concert.user_id)
-    puts @user.inspect
     @carpool = "carpool"
   end
 
@@ -37,6 +42,7 @@ class ConcertsController < ApplicationController
     @user = User.find(params[:user_id])
     @concert = Concert.new
     @concerts = Concert.all
+    @hide_buttons = true
   end
 
   # GET /concerts/1/edit
@@ -48,18 +54,14 @@ class ConcertsController < ApplicationController
   def create
     @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], user_id:params[:user_id])
     @concerts = Concert.all
-    puts "-_"*70
-    p @concert.venue
-    p @concert.date
-    p @concert.user_id
+    @user = User.find(params[:user_id])
+
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @concert, notice: 'Concert was successfully added.' }
-        format.json { render :show, status: :created, location: @concert }
+        format.html { redirect_to @user, notice: 'Concert was successfully added.' }
       else
         format.html { render :new }
-        format.json { render json: @concert.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,10 +84,7 @@ class ConcertsController < ApplicationController
   # DELETE /concerts/1.json
   def destroy
     @concert.destroy
-    respond_to do |format|
-      format.html { redirect_to concerts_url, notice: 'Concert was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(params[:format]), notice: 'Concert was successfully destroyed.' 
   end
 
   private

@@ -1,4 +1,4 @@
-<%= form_for ([@user, @event]), url: {action: "create"}, html: {:method => :post} do |f| %>
+<%= form_for [@user, @event], url: {action: "create"}, html: {:method => :post} do |f| %>
 <br/>
 <h1>MAP</h1>
 <h5>Here are the carpools in your area! If you'd like to carpool, enter your pickup location below.</h5>
@@ -9,13 +9,11 @@
     <input type="hidden" name="id" value="<%= @concert.id %>">
     <input type="hidden" name="user_id" value="<%=params[:user_id]%>">
     <input type="hidden" name="carpool" value="carpool">
+    <input id="submit" type="button" value="Submit carpool address">
+    <%= f.submit 'Confirm Pin', :id => 'confirm_button'%>
 
-    <%= f.submit 'Submit', :id => "submit" %>
-<!-- Reverse geocode -->
-    <!-- <input id="latlng" type="text" value="40.714224,-73.961452">
-    <input id="submit" type="button" value="Reverse Geocode"> -->
   </div>
- <%= f.text_field :location %>
+  <%= f.hidden_field :location %>
   <div id='map'></div>
 </div>
 

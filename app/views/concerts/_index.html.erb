@@ -20,6 +20,12 @@
           <% unless @hide_add_to_concerts %>
           <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
           <% end %>
+          <% unless @hide_buttons %>
+          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary" %></td>
+          <td><i class="fa fa-car fa-2x"></i></td>
+          <td><i class="fa fa-users fa-2x"></i></td>
+          <% end %>
+
       </tr>
     <% end %>
   </tbody>

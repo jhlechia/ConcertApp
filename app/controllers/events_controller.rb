@@ -26,7 +26,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @user = User.find(@concert.user_id)
+    @event = Event.find_by_id(params[:id])
+    @concert = Concert.find_by_id(@event.concert_id)
+    @user = User.find_by_id(@concert.user_id)
 
   end
 

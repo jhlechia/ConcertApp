@@ -86,6 +86,19 @@ class ConcertsController < ApplicationController
 
   # DELETE /concerts/1
   # DELETE /concerts/1.json
+  # def before_destroy
+  #   p '*'* 44
+  #   @concert = Concert.find_by(user_id: params[:format])
+  #   @events = Event.where(concert_id: @concert.id)
+  #
+  #   @new_concert = Concert.where(artist: @concert.artist).where.not(user_id: params[:format])
+  #   @events.each do |x|
+  #     x.concert_id = @new_concert.id
+  #   end
+  #   @concert.destroy
+  # end
+
+
   def destroy
     @concert.destroy
     redirect_to user_path(params[:format]), notice: 'Concert was successfully deleted.'

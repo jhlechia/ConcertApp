@@ -44,6 +44,12 @@
       </div>
       <%=f.error_span(:password) %>
     </div>
+    <div class="form-group">
+      <%= f.label :Upload_a_profile_image, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.file_field :image, :class => 'form-control' %>
+      </div>
+      <br>
 
     <div class="form-group">
       <div class="col-lg-offset-2 col-lg-10">

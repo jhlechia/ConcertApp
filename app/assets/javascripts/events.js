@@ -11,10 +11,10 @@ function initMap() {
   });
 
 
-// Geolocation. Sets map to user's geolocation
-var infoWindow = new google.maps.InfoWindow({map: map});
+  // Geolocation. Sets map to user's geolocation
+  var infoWindow = new google.maps.InfoWindow({map: map});
 
-if (navigator.geolocation) {
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
@@ -40,12 +40,12 @@ if (navigator.geolocation) {
   var geocoder = new google.maps.Geocoder;
 
   document.getElementById('submit').addEventListener('click', function() {
-  geocodeAddress(geocoder, map);
-});
+    geocodeAddress(geocoder, map);
+  });
   // Reverse Geocode
   // var infowindow = new google.maps.InfoWindow;
 
-// Reverse Geocode
+  // Reverse Geocode
   // document.getElementById('submit').addEventListener('click', function() {
   //   geocodeLatLng(geocoder, map, infowindow);
   // });
@@ -103,7 +103,6 @@ var markers = [];
 var map;
 
 function drop() {
-  test = [];
   var latCollection = [];
   var lngCollection = [];
   console.log($('.lats'));
@@ -115,8 +114,9 @@ function drop() {
     lngCollection.push(parseFloat($(this).html()));
   });
   console.log(lngCollection);
-  neighborhoods.push({lat: latCollection[10], lng: lngCollection[10]});
-
+  for (var i = 0 ; i  < latCollection.length ; i++) {
+    neighborhoods.push({lat: latCollection[i], lng: lngCollection[i]});
+  }
 
   clearMarkers();
   for (var i = 0; i < neighborhoods.length; i++) {
@@ -169,6 +169,6 @@ function clearMarkers() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-}
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+  }

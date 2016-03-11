@@ -6,19 +6,23 @@ class ConcertsController < ApplicationController
   end
 
   def search
-  artist = params[:artist_name].gsub(" ","+")
-  @user = User.find(params[:user_id])
-  @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
-  @json = JSON.parse(@response.body).with_indifferent_access
+    artist = params[:artist_name].gsub(" ","+")
+    @user = User.find(params[:user_id])
+    artist = 'kaka' if artist.nil?
+    puts " Here is my artist #{artist.inspect}"
+    @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
+    @json = JSON.parse(@response.body).with_indifferent_access
 
-  # @json['response']['gigs'].each do |item|
-  #   p item['name']
-  #   p item['venue']['name']
-  #   p item['venue']['location']['city']
-  # end
-  puts "_-"*44
-  p @json['response']['gigs'][0]['name']
-  p params
+
+    if @json['status'] == "error"
+      respond_to do |format|
+        format.js {  render :js => "hide_spinner();" }
+      end
+    elsif @json['response']['gigs'][0] == nil
+      respond_to do |format|
+        format.js {  render :js => "hide_spinner();" }
+      end
+    end
 
   end
 
@@ -82,9 +86,22 @@ class ConcertsController < ApplicationController
 
   # DELETE /concerts/1
   # DELETE /concerts/1.json
+  # def before_destroy
+  #   p '*'* 44
+  #   @concert = Concert.find_by(user_id: params[:format])
+  #   @events = Event.where(concert_id: @concert.id)
+  #
+  #   @new_concert = Concert.where(artist: @concert.artist).where.not(user_id: params[:format])
+  #   @events.each do |x|
+  #     x.concert_id = @new_concert.id
+  #   end
+  #   @concert.destroy
+  # end
+
+
   def destroy
     @concert.destroy
-    redirect_to user_path(params[:format]), notice: 'Concert was successfully deleted.' 
+    redirect_to user_path(params[:format]), notice: 'Concert was successfully deleted.'
   end
 
   private

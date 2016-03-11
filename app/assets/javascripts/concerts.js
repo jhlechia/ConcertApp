@@ -9,7 +9,9 @@ init_concert_lookup = function(){
   });
 }
 
-
-$(document).ready(function(){
+$(document).on('ready page:load', function() {
   init_concert_lookup();
-})
+});
+
+// $(document).ready(function(){
+// })

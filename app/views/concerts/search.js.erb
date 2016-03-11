@@ -1,11 +1,11 @@
 
 $('#artist_name').val("");
 
-$('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["gigs"][0]["name"] %></h2></caption><tr><th>Venue</th><th>City</th><th>Date</th><th></th></tr>')
 
-hide_spinner();
+  $('#concert-lookup-results').show().append('<caption><h2><%= @json["response"]["gigs"][0]["name"] %></h2></caption><tr><th>Venue</th><th>City</th><th>Date</th><th></th></tr>')
+  hide_spinner();
 
 
-<% @json['response']['gigs'].each do |item| %>
-  $('#concert-lookup-results').append('<tr><td><%= item["venue"]["name"] %></td><td><%= item["venue"]["location"]["city"] %></td><td><%= item["startDate"].to_time.strftime("%A, %b %d at %I %p")%></td><td><%= button_to "Add to my Concerts", action:"create", controller: "concerts", user_id: params[:user_id], artist: @json["response"]["gigs"][0]["name"], venue: item["venue"]["name"], date: item["startDate"].to_time, user_id: params[:user_id]%></td></tr>');
-<% end %>
+  <% @json['response']['gigs'].each do |item| %>
+    $('#concert-lookup-results').append('<tr><td><%= item["venue"]["name"] %></td><td><%= item["venue"]["location"]["city"] %></td><td><%= item["startDate"].to_time.strftime("%A, %b %d at %I %p")%></td><td><%= button_to "Add to my Concerts", action:"create", controller: "concerts", user_id: params[:user_id], artist: @json["response"]["gigs"][0]["name"], venue: item["venue"]["name"], date: item["startDate"].to_time %></td></tr>');
+  <% end %>

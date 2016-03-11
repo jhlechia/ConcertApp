@@ -13,6 +13,63 @@
  *= require_tree .
  *= require_self
  */
+  body, p, a {
+   font-family: 'Poppins', sans-serif;
+  }
+
+  p {
+  font-weight: 300;
+  }
+
+ footer {
+   text-align: center;
+   padding-top: 5px;
+ }
+
+ #our-nav a {
+
+ }
+ #login {
+   text-align: center;
+ }
+
+ .footer {
+   padding: 0;
+ }
+
+.top-div {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar {
+  padding-top: 2vh;
+  padding-bottom: 3vh;
+  margin-bottom: 0;
+  background-color: #edf2f4;
+}
+
+.navbar-brand {
+  font-size: 40px;
+  font-weight: 500;
+  color: #edf2f4;
+}
+
+.navbar-default .navbar-brand {
+  color: #0fcdf2;
+}
+
+/*.navbar-nav li a {
+
+  color: #0fcdf2;
+}*/
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 15px ;
+    color: #0fcdf2;
+}
+
+
 
  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #3071a9;

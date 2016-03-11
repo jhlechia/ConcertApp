@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "ConcertApp" %></title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600' rel='stylesheet' type='text/css'>
+    <title><%= content_for?(:title) ? yield(:title) : "AmpedUp | Adding to your concert experience" %></title>
 
     <%= csrf_meta_tags %>
 
@@ -48,9 +49,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">ConcertApp</a>
+        <a class="navbar-brand" href="#">AmpedUp</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav" id="our-nav">
+
+              <li><%= link_to "About" %></li>
+              <li><%= link_to "Contact Us" %></li>
+              <li><%= link_to "Careers" %></li>
             <% if logged_in? %>
               <li><%= link_to "My Profile", user_path(current_user.id) %></li>
               <li><%= link_to 'Log out', logout_path, method: :post, controller: "sessions", action: "destroy" %></li>
@@ -62,32 +67,17 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="col-lg-12">
+    <div>
+      <div class="container-fluid top-div">
         <%= bootstrap_flash %>
         <%= yield %>
       </div>
-        <!-- <div class="col-lg-3"> -->
-          <!-- <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div> -->
-          <!--/.well -->
-        <!-- </div> -->
-        <!--/span-->
-      <!-- </div> -->
-      <!--/row-->
-
+    </div> <!-- /container -->
+    <div  class="container-fluid footer col-lg-12">
       <footer>
         <p>&copy; Company 2016</p>
       </footer>
-
-    </div> <!-- /container -->
+    </div>
     <hr/>
     <%= params %>
     <br/>

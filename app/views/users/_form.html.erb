@@ -1,6 +1,6 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+    <%= form_for @user, html: { class:"form-horizontal user" } do |f| %>
 
     <% if @user.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -16,7 +16,6 @@
       </div>
     </div>
     <% end %>
-
     <div class="form-group">
       <%= f.label :name, :class => 'control-label col-lg-2' %>
       <div class="col-lg-10">

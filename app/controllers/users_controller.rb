@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if @user.save
         redirect_to @user, notice: 'User was successfully created.'
       else
-        redirect_to root_path, alert: "Sorry, the information you provided is incorrect."
+        redirect_to root_path, alert: "Sorry, the information you provided is incorrect. Please try again."
       end
 
   end
@@ -71,6 +71,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :username, :email, :password)
+      params.require(:user).permit(:name, :username, :email, :password, :image)
     end
 end

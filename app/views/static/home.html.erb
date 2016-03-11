@@ -1,9 +1,17 @@
-<div class="home_vid">
-<video width="320" height="240" autoplay loop>
-  <source src="movie.mp4" type="video/mp4" />
-  <source src="movie.ogg" type="video/ogg" />
-  Your browser does not support the video tag.
-</video>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="/assets/concert_teal.jpg" alt="Concert stage close">
+    </div>
+    <div class="item">
+      <img src="/assets/concert_far .jpeg" alt="Concert stage far">
+    </div>
+
+    <div class="item">
+      <img src="/assets/heart.jpeg" alt="Flower">
+    </div>
+  </div>
+
 </div>
 
 <h1 id="login">Log In</h1>
@@ -23,9 +31,8 @@
       <% end %>
       <br>
       <%= f.submit "Log In", class:"btn btn-primary" %>
+      <p class="new-user">New user?<button type="button" class="btn btn-link" id="myBtn">Sign up now!</button>
     <% end %>
-    <br>
-    <p class="new-user">New user? <button type="button" class="label label-info" id="myBtn">Sign up now!</button>
   </div>
 </div>
 

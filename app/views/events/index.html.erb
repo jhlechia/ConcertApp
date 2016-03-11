@@ -5,31 +5,23 @@
 </div>
 <table class="table table-striped table-hover">
   <thead>
-          <th><%= model_class.human_attribute_name(:id) %></th>
-          <th><%= model_class.human_attribute_name(:is_carpool) %></th>
-          <th><%= model_class.human_attribute_name(:is_meetup) %></th>
-          <th><%= model_class.human_attribute_name(:time) %></th>
-          <th><%= model_class.human_attribute_name(:location) %></th>
           <th><%= model_class.human_attribute_name(:description) %></th>
+          <th><%= model_class.human_attribute_name(:location) %></th>
+          <th><%= model_class.human_attribute_name(:time) %></th>
           <th><%= model_class.human_attribute_name(:concert_id) %></th>
-          <th><%= model_class.human_attribute_name(:created_at) %></th>
           <th><%=t '.actions', :default => t("helpers.actions") %></th>
   </thead>
   <tbody>
     <% @events.each do |event| %>
       <tr onclick="location.href='<%= user_messages_path(event) %>'">
-            <td><%= event.id %></td>
-            <td><%= event.is_carpool %></td>
-            <td><%= event.is_meetup %></td>
+        <td><%= event.description %></td>
+        <td><%= event.location %></td>
             <% if event.time %>
               <td><%= event.time.strftime("%I:%M%p").downcase %></td>
               <% else %>
               <td><%= event.time %></td>
             <% end %>
-            <td><%= event.location %></td>
-            <td><%= event.description %></td>
             <td><%= event.concert_id %></td>
-            <td><%=l event.created_at %></td>
             <td>
               <%= link_to 'Join', user_messages_path(event, params[:user_id]), class: 'btn btn-default btn-xs'  %>
               <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -46,7 +38,7 @@
   </tbody>
 </table>
 <% unless @hide_new_meetup_button %>
-<%= button_to 'New Meetup', user_messages_path(params[:user_id]), class: 'btn btn-primary' %>
+<%= link_to 'New Meetup', new_user_event_path(params[:user_id]), class: 'btn btn-primary' %>
 <% end %>
 
 <% if @carpool %>

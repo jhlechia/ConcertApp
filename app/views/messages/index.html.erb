@@ -5,10 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
-      <th><%= model_class.human_attribute_name(:event_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,9 +13,6 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= link_to message.id, message_path(message) %></td>
-        <td><%= message.body %></td>
-        <td><%= message.event_id %></td>
-        <td><%=l message.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_message_path(message), :class => 'btn btn-default btn-xs' %>

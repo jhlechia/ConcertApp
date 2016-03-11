@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   post 'concert', to: 'concerts#destroy'
 
 
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

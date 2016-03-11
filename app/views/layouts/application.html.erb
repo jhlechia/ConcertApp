@@ -51,6 +51,9 @@
         <a class="navbar-brand" href="#">ConcertApp</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+              <li><%= link_to "About" %></li>
+              <li><%= link_to "Contact Us" %></li>
+              <li><%= link_to "Careers" %></li>
             <% if logged_in? %>
               <li><%= link_to "My Profile", user_path(current_user.id) %></li>
               <li><%= link_to 'Log out', logout_path, method: :post, controller: "sessions", action: "destroy" %></li>

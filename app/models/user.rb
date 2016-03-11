@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
+  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#"}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   has_secure_password
   has_many :concerts
   validates :username, presence: true, uniqueness: {case_sensitive: false}, length: {minimum: 3, maximum: 20}

@@ -18,7 +18,19 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @message.event_id = params[:event_id]
+    p @message
+    @event = Event.find_by_id(params[:user_id])
+    p @event
+    @events = Event.where(is_meetup: true)
+    p @event
+    @concert = Concert.where(id: @event)
+    p @concert
+    @concerts = Concert.where(artist: @concert.artist, time: @concert.datetime)
+    p @concerts
+    @message.event_id = @event.id
+    @messages = Message.where(event_id: @event.id)
+    p @messages
+
   end
 
   # GET /messages/1/edit

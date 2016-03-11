@@ -20,10 +20,10 @@
 </div>
 
 <% @events.each do |event| %>
-<div class="lats">
+<div class="lats" style="display: none;">
   <%= event.get_lat %>
 </div>
-<div class="lngs">
+<div class="lngs" style="display: none;">
   <%= event.get_lng %>
 </div>
 <br/>

@@ -13,31 +13,16 @@ class ConcertsController < ApplicationController
     @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
     @json = JSON.parse(@response.body).with_indifferent_access
 
-    # render json: @json
-    # if @json['response']['gigs'][0]
-    #   render json: @json
-    # end
 
-
-
-
-    # if @json['response']['gigs'][0]
-    #   respond_to do |format|
-    #     format.html {   }
-    #     format.json { render :new, status: :error, location: @concert }
-    #     # format.js { render js: console.log('eureka!!!!!!!!!!')}
-    #   end
-    # end
-
-    # @json['response']['gigs'].each do |item|
-    #   p item['name']
-    #   p item['venue']['name']
-    #   p item['venue']['location']['city']
-    # end
-    # puts "_-"*44
-    # p @json
-    # # p @json['response']['gigs'][0]['name']
-    # p params
+    if @json['status'] == "error"
+      respond_to do |format|
+        format.js {  render :js => "hide_spinner();" }
+      end
+    elsif @json['response']['gigs'][0] == nil
+      respond_to do |format|
+        format.js {  render :js => "hide_spinner();" }
+      end
+    end
 
   end
 

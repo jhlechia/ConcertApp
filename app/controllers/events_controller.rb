@@ -8,7 +8,11 @@ class EventsController < ApplicationController
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
     @event = Event.find_by(concert_id: @concert.id)
-    @messages = Message.where(event_id: @event.id)
+
+
+    if Message.count!=0
+      @messages = Message.where(event_id: @event.id)
+    end
 
 
     if (params[:format] == 'carpool')
@@ -26,9 +30,38 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+
+    @user = User.find_by_id(params[:format])
     @event = Event.find_by_id(params[:id])
     @concert = Concert.find_by_id(@event.concert_id)
-    @user = User.find_by_id(@concert.user_id)
+
+    @events = Event.where(concert_id: @concert.id, is_meetup:true)
+    @concerts = Concert.where(artist:@concert.artist, date:@concert.date)
+    @messages = Message.where(event_id:@event.id)
+    @carpool = params[:carpool]
+
+    p "-_"*47
+    p @user
+    p "user"
+    p @concert
+    p "concert"
+    p @concerts
+    p "concerts"
+    p @event
+    p "event"
+    p @events
+    p "events"
+    p @messages
+    p "messages"
+
+
+    # @events = []
+    # # @concerts.each do |c|
+    # #   @events += c.events
+    # # end
+    # p "<>"*47
+    # p @events
+    # @messages = Message.where()
 
   end
 

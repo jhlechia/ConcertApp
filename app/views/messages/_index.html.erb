@@ -12,7 +12,7 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= link_to message.id, message_path(message) %></td>
+        <td><%= link_to message.body, message_path(message) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_message_path(message), :class => 'btn btn-default btn-xs' %>
@@ -26,7 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_message_path,
-            :class => 'btn btn-primary' %>

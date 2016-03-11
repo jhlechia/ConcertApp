@@ -8,6 +8,9 @@ class EventsController < ApplicationController
     @concert = Concert.find_by(id: params[:user_id])
     @events = Event.where(concert_id: @concert.id)
     @event = Event.find_by(concert_id: @concert.id)
+    @messages = Message.where(event_id: @event.id)
+
+
     if (params[:format] == 'carpool')
       @events = @events.where(is_carpool:true)
       @carpool = true
@@ -16,6 +19,7 @@ class EventsController < ApplicationController
     else
       @events = @events.where(is_meetup:true)
     end
+
 
   end
 

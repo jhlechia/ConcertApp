@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     # @events = Event.all
-    @concert = Concert.find_by(id: params[:user_id])
+    @concert = Concert.find_by(id: params[:format])
     @events = Event.where(concert_id: @concert.id)
     @event = Event.find_by(concert_id: @concert.id)
 
@@ -31,8 +31,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
 
-    @user = User.find_by_id(params[:format])
-    @event = Event.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
+    @event = Event.find_by_id(params[:format])
     @concert = Concert.find_by_id(@event.concert_id)
 
     @events = Event.where(concert_id: @concert.id, is_meetup:true)

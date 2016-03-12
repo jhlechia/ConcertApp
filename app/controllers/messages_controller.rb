@@ -4,10 +4,9 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @event = Event.find_by(id: params[:user_id])
-    puts @event.inspect
+    p "MessagesIndex ?????? "*19
+    @event = Event.find_by_id(params[:format])
     @messages = Message.where(event_id: @event.id)
-
   end
 
   # GET /messages/1
@@ -40,14 +39,13 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    p "<>"*47
-    @message = Message.new()
+    @message = Message.new
+    @message.event_id = params[:message][:event_id]
     @message.body = params[:message][:body]
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to(:back) notice: 'Message was successfully created.' }
-
+        format.html { redirect_to :back,  notice: 'Message was successfully created.' }
       else
         format.html { render :new }
       end

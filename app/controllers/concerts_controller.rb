@@ -36,8 +36,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1
   # GET /concerts/1.json
   def show
-    @user = User.find_by_id(params[:format])
-    @concert = Concert.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
+    @concert = Concert.find_by_id(params[:format])
     @carpool = "carpool"
   end
 

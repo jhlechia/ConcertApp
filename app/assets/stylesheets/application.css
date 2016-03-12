@@ -25,6 +25,33 @@
    text-align: center;
    margin-top: 20px;
    padding-top: 5px;
+   color: #0fcdf2;
+ }
+
+ label {
+   padding-top: 5%;
+ }
+
+ .container-fluid, footer {
+   background-color: black;
+ }
+
+ .btn-primary {
+   background-color: #0fcdf2;
+   border: none;
+ }
+
+ .btn-primary:hover {
+   background-color: #9c2c86;
+ }
+
+ .btn-link {
+   color: #0fcdf2;
+ }
+
+ .btn-link:hover {
+   color: #9c2c86;
+   text-decoration: none;
  }
 
  #our-nav a:hover {

@@ -19,12 +19,23 @@
       top: 250px;
       width: 100%;
   }
+
   .login-container > .container {
       width: 400px;
       background-color: white;
-      opacity: 0.75;
+      opacity: 0.8;
       padding-left: 30px;
       padding-right: 30px;
+      border-radius: 5%;
   }
+}
 
+@media only screen and (max-width: 768px) {
+
+.login-container > .container {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

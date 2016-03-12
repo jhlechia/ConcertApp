@@ -2,3 +2,29 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.top-div {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#login {
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .login-container {
+      position: absolute;
+      top: 250px;
+      width: 100%;
+  }
+  .login-container > .container {
+      width: 400px;
+      background-color: white;
+      opacity: 0.75;
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+
+}

@@ -23,24 +23,17 @@
 
  footer {
    text-align: center;
+   margin-top: 20px;
    padding-top: 5px;
  }
 
  #our-nav a:hover {
      color: #edf2f4;
  }
- #login {
-   text-align: center;
- }
 
  .footer {
    padding: 0;
  }
-
-.top-div {
-  padding-left: 0;
-  padding-right: 0;
-}
 
 .navbar {
   padding-top: 2vh;
@@ -74,8 +67,6 @@
   padding-top: 20px;
 }
 
-
-
  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #3071a9;
 }
@@ -108,15 +99,4 @@
 
 #search-submit {
   margin:10px;
-}
-
-@media only screen and (min-width: 768px) {
-
-  .login-container {
-      position: absolute;
-      top: 250px;
-      background-color: white;
-      opacity: 0.75;
-  }
-
 }

@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% @events.each do |event| %>
-        <tr onclick="location.href='<%= event_path(event,params[:user_id],{"carpool"=>"false"}) %>'">
+        <tr onclick="location.href='<%= event_path(params[:user_id],event,{"carpool"=>"false"}) %>'">
           <td><%= event.description %></td>
           <td><%= event.location %></td>
               <% if event.time %>
@@ -41,6 +41,8 @@
 
 <% unless @hide_new_meetup_button %>
   <%= link_to 'New Meetup', new_user_event_path(params[:user_id]), class: 'btn btn-primary' %>
+
+
 <% end %>
 
 <% if @carpool %>

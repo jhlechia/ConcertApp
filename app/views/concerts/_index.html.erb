@@ -3,12 +3,16 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped table-hover">
+<div class="table-container">
+<table class="table">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:artist) %></th>
       <th><%= model_class.human_attribute_name(:venue) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -30,4 +34,5 @@
     <% end %>
   </tbody>
 </table>
+</div>
 </div>

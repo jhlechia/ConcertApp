@@ -41,6 +41,27 @@
    color: white;
  }
 
+ thead {
+   background-color: #0fcdf2;
+ }
+
+ tr:hover {
+   background: rgba(15,205,242, .3);
+ }
+
+ i {
+   color: black;
+ }
+
+ td i a:hover {
+   background-color: none;
+ }
+
+ .table-container {
+   width: 70%;
+   margin-left: 15%;
+ }
+
  .btn-primary, .btn-default {
    background-color: #0fcdf2;
    border: none;

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-  body, p, a {
+  body, td, p, a {
    font-family: 'Poppins', sans-serif;
   }
 
@@ -23,26 +23,33 @@
 
  footer {
    text-align: center;
-   margin-top: 20px;
-   padding-top: 5px;
+   padding-top: 15px;
+   padding-bottom: 10px;
    color: #0fcdf2;
+   background-color: black;
+   width: 100%;
+ }
+
+ footer p {
+   padding-bottom: 0;
  }
 
  label {
    padding-top: 5%;
  }
-
- .container-fluid, footer {
-   background-color: black;
+ a:visited {
+   color: white;
  }
 
- .btn-primary {
+ .btn-primary, .btn-default {
    background-color: #0fcdf2;
    border: none;
+   color: white;
  }
 
- .btn-primary:hover {
+ .btn-primary:hover, .btn-default:hover {
    background-color: #9c2c86;
+   color: white;
  }
 
  .btn-link {

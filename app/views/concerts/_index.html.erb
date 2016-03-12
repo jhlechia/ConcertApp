@@ -14,9 +14,9 @@
   <tbody>
     <% @concerts.each do |concert| %>
       <tr>
-          <td><%= concert.artist %></td>
-          <td><%= concert.venue %></td>
-          <td><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
+          <td href onclick="location.href='<%= concert_path(params[:id], concert) %>'"><%= concert.artist %></td>
+          <td href onclick="location.href='<%= concert_path(params[:id], concert) %>'"><%= concert.venue %></td>
+          <td href onclick="location.href='<%= concert_path(params[:id], concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
           <% unless @hide_add_to_concerts %>
             <td><%= button_to 'Add to Concerts', {action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date}, {class:"btn btn-xs btn-primary"} %></td>
           <% end %>

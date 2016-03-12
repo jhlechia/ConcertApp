@@ -70,11 +70,11 @@
 
  .current-concert ul {
    list-style: none;
-   display: inline;
+   display: inline-flex;
+   padding-left: 0;
  }
 
  .current-concert li {
-   float: left;
    padding-left: 15px;
  }
 

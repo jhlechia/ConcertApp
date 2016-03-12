@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     p "MessagesIndex ?????? "*19
     @event = Event.find_by_id(params[:format])
     @messages = Message.where(event_id: @event.id)
+    @user = current_user
   end
 
   # GET /messages/1

@@ -3,6 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+
 <div class="col-md-6">
   <div class="col-md-12">
   <dl class="dl-horizontal">
@@ -12,7 +13,7 @@
     <dd><%= @concert.venue %></dd>
     <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
     <dd><%= @concert.date.strftime("%A, %b %d at %I %p") %></dd>
-    <br>  
+    <br>
     <dd><%= link_to 'Carpool', user_events_path(@concert, @carpool), class: 'btn btn-primary' %>
     <%= link_to 'Meetup', user_events_path(@concert), class: 'btn btn-primary' %></dd>
   </dl>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post 'new_user_concert', to: 'concerts#create'
   post 'concert', to: 'concerts#destroy'
+  post 'messages', to: 'messages#create'
 
 
   # Example of regular route:

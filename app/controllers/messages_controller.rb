@@ -18,7 +18,19 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @message.event_id = params[:event_id]
+    p @message
+    @event = Event.find_by_id(params[:user_id])
+    p "event: "+@event
+    @events = Event.where(is_meetup: true)
+    p "events: "+@events
+    @concert = Concert.where(id: @event)
+    p "concert"+@concert
+    @concerts = Concert.where(artist: @concert.artist, time: @concert.datetime)
+    p "concerts"+@concerts
+    @message.event_id = @event.id
+    @messages = Message.where(event_id: @event.id)
+    p "messages"+@messages
+
   end
 
   # GET /messages/1/edit
@@ -28,15 +40,16 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
+    p "<>"*47
+    @message = Message.new()
+    @message.body = params[:message][:body]
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        format.html { redirect_to(:back) notice: 'Message was successfully created.' }
+
       else
         format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end

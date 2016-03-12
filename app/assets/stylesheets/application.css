@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-  body, p, a {
+  body, td, p, a {
    font-family: 'Poppins', sans-serif;
   }
 
@@ -23,53 +23,104 @@
 
  footer {
    text-align: center;
-   padding-top: 5px;
+   padding-top: 15px;
+   padding-bottom: 10px;
+   color: #0fcdf2;
+   background-color: black;
+   width: 100%;
  }
 
- #our-nav a {
-
+ footer p {
+   padding-bottom: 0;
  }
- #login {
-   text-align: center;
+
+ label {
+   padding-top: 5%;
+ }
+ a:visited {
+   color: white;
+ }
+
+ thead {
+   background-color: #0fcdf2;
+ }
+
+ tr:hover {
+   background: rgba(15,205,242, .3);
+ }
+
+ i {
+   color: black;
+ }
+
+ td i a:hover {
+   background-color: none;
+ }
+
+ .table-container {
+   width: 70%;
+   margin-left: 15%;
+ }
+
+ .btn-primary, .btn-default {
+   background-color: #0fcdf2;
+   border: none;
+   color: white;
+ }
+
+ .btn-primary:hover, .btn-default:hover {
+   background-color: #9c2c86;
+   color: white;
+ }
+
+ .btn-link {
+   color: #0fcdf2;
+ }
+
+ .btn-link:hover {
+   color: #9c2c86;
+   text-decoration: none;
+ }
+
+ #our-nav a:hover {
+     color: #edf2f4;
  }
 
  .footer {
    padding: 0;
  }
 
-.top-div {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .navbar {
   padding-top: 2vh;
   padding-bottom: 3vh;
   margin-bottom: 0;
-  background-color: #edf2f4;
+  background-color: black;
+  border: none;
 }
 
 .navbar-brand {
   font-size: 40px;
   font-weight: 500;
+  color: #0fcdf2;
+}
+
+.navbar-brand a:hover {
   color: #edf2f4;
 }
 
 .navbar-default .navbar-brand {
   color: #0fcdf2;
+  padding-top: 20px;
 }
-
-/*.navbar-nav li a {
-
-  color: #0fcdf2;
-}*/
 
 .navbar-default .navbar-nav > li > a {
     font-size: 15px ;
     color: #0fcdf2;
 }
 
-
+.navbar, .navbar-default, .navbar-static-top {
+  padding-top: 20px;
+}
 
  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #3071a9;

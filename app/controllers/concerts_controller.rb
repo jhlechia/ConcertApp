@@ -30,14 +30,14 @@ class ConcertsController < ApplicationController
   # GET /concerts.json
   def index
     @concerts = Concert.all
+    @user = User.find_by_id(params[:format])
   end
 
   # GET /concerts/1
   # GET /concerts/1.json
   def show
-    # render json: params
-    # @concert.user_id = params[:user_id]
-    @user = User.find(@concert.user_id)
+    @user = User.find_by_id(params[:format])
+    @concert = Concert.find_by_id(params[:id])
     @carpool = "carpool"
   end
 

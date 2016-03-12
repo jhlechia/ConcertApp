@@ -22,8 +22,9 @@
 
   .login-container > .container {
       width: 400px;
-      background-color: white;
-      opacity: 0.8;
+      /*background-color: white;
+      opacity: 0.8;*/
+      background: rgba(255, 255, 255, .7);
       padding-left: 30px;
       padding-right: 30px;
       border-radius: 5%;

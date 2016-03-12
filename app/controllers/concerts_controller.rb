@@ -8,8 +8,6 @@ class ConcertsController < ApplicationController
   def search
     artist = params[:artist_name].gsub(" ","+")
     @user = User.find(params[:user_id])
-    artist = 'kaka' if artist.nil?
-    puts " Here is my artist #{artist.inspect}"
     @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
     @json = JSON.parse(@response.body).with_indifferent_access
 
@@ -45,7 +43,7 @@ class ConcertsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @concert = Concert.new
-    @concerts = Concert.all
+    @concerts = Concert.limit(7).order("RANDOM()")
     @hide_buttons = true
   end
 

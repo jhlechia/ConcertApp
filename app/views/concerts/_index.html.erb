@@ -14,16 +14,16 @@
   <tbody>
     <% @concerts.each do |concert| %>
       <tr>
-          <td href onclick="location.href='<%= concert_path(params[:id],concert) %>'"><%= concert.artist %></td>
-          <td href onclick="location.href='<%= concert_path(params[:id],concert) %>'"><%= concert.venue %></td>
-          <td href onclick="location.href='<%= concert_path(params[:id],concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
+          <td><%= concert.artist %></td>
+          <td><%= concert.venue %></td>
+          <td><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
           <% unless @hide_add_to_concerts %>
-          <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
+            <td><%= button_to 'Add to Concerts', {action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date}, {class:"btn btn-xs btn-primary"} %></td>
           <% end %>
           <% unless @hide_buttons %>
-          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary" %></td>
-          <td><%= link_to user_events_path(params[:id], concert_id: concert.id, format:"carpool") do %><i class="fa fa-car fa-2x"></i><% end %></td>
-          <td><%= link_to user_events_path(params[:id], concert_id: concert.id) do %><i class="fa fa-users fa-2x"></i><% end %></td>
+            <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to user_events_path(params[:id], concert_id: concert.id, format:"carpool") do %><i class="fa fa-car fa-2x"></i><% end %></td>
+            <td><%= link_to user_events_path(params[:id], concert_id: concert.id) do %><i class="fa fa-users fa-2x"></i><% end %></td>
           <% end %>
 
       </tr>

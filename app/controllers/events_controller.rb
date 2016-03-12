@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     # @events = Event.all
-    @concert = Concert.find_by(id: params[:concert_id])
+    @concert = Concert.find_by_id(params[:format])
     @events = Event.where(concert_id: @concert.id)
     @event = Event.find_by(concert_id: @concert.id)
 

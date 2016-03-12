@@ -40,7 +40,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
+    p "<>"*47
+    @message = Message.new()
+    @message.body = params[:message][:body]
 
     respond_to do |format|
       if @message.save

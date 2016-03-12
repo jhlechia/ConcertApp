@@ -39,6 +39,7 @@ class EventsController < ApplicationController
     @concerts = Concert.where(artist:@concert.artist, date:@concert.date)
     @messages = Message.where(event_id:@event.id)
     @carpool = params[:carpool]
+    @message = Message.new
 
     p "-_"*47
     p @user
@@ -86,6 +87,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+
+   puts " HEREEEEEE   #{user_id}"
 
     if params[:carpool]
       @event.is_carpool = true

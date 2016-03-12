@@ -17,11 +17,17 @@
    font-family: 'Poppins', sans-serif;
   }
 
+  h1 {
+    text-align: center;
+  }
+
   p {
   font-weight: 300;
   }
 
  footer {
+   position: absolute;
+   bottom: 0;
    text-align: center;
    padding-top: 15px;
    padding-bottom: 10px;

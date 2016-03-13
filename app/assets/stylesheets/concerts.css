@@ -6,15 +6,27 @@
 .concert-container {
   width: 500px;
   margin: 0 auto;
+  margin-left: 22%;
 }
 
 .button-container {
   text-align: center;
   padding-bottom: 10px;
+  margin-left: 20%;
+  margin-bottom: 13%;
+}
+
+.pic-container {
+  width: 500px;
+  margin: 0 auto;
 }
 
 dl {
     margin-left: 75px;
+}
+
+dl-horizontal {
+  padding-bottom: 0;
 }
 
 #remove-btn {

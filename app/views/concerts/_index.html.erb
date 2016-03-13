@@ -26,8 +26,10 @@
           <% end %>
           <% unless @hide_buttons %>
           <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary", id: "remove-btn" %></td>
-          <td><%= link_to user_events_path(concert, {format:"carpool"}) do %><i class="fa fa-car fa-2x"></i><% end %></td>
-          <td><%= link_to user_events_path(@user) do %><i class="fa fa-users fa-2x"></i><% end %></td>
+
+          <td><%= link_to user_events_path(current_user.id, concert, {carpool: true}) do %><i class="fa fa-car fa-2x"></i><% end %></td>
+
+          <td><%= link_to user_events_path(current_user.id, concert, {carpool: false}) do %><i class="fa fa-users fa-2x"></i><% end %></td>
 
           <% end %>
 

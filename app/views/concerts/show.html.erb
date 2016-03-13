@@ -5,6 +5,8 @@
 
 <div class="concert-container">
   <dl class="dl-horizontal">
+    <dt></dt>
+    <dd><img src="<%= @concert.image%>"/></dd>
     <dt><strong><%= model_class.human_attribute_name(:artist) %>:</strong></dt>
     <dd><%= @concert.artist %></dd>
     <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>

@@ -55,7 +55,7 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
-    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], user_id:params[:user_id])
+    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], image:params[:image], user_id:params[:user_id])
     @concerts = Concert.all
     @user = User.find(params[:user_id])
 

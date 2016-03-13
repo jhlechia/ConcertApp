@@ -1,148 +1,117 @@
 <div class="event-index">
-<%- model_class = Event -%>
+  <%- model_class = Event -%>
+  <div class="page-header">
+    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  </div>
 
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+  <% if params[:carpool] == "false" %>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <th><%= model_class.human_attribute_name(:description) %></th>
+          <th><%= model_class.human_attribute_name(:time) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr onclick="location.href='<%= event_path(params[:user_id],event.id,{"carpool"=>"false"}) %>'">
+              <td><%= event.description %></td>
+              <td><%= event.time.strftime("%I:%M%p").downcase %></td>
+              <td>
+                  <%= link_to 'Join', user_messages_path(event, params[:user_id]), class: 'btn btn-default btn-xs'  %>
+                  <% if (current_user.id == event.concert.user_id) %>
+                    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                edit_event_path(event), :class => 'btn btn-default btn-xs' %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<% if params[:carpool] == "false" %>
-<div class="table-container">
-  <table class="table">
-    <thead>
-            <th><%= model_class.human_attribute_name(:description) %></th>
-            <th><%= model_class.human_attribute_name(:time) %></th>
-            <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </thead>
-    <tbody>
-      <% @events.each do |event| %>
-        <tr onclick="location.href='<%= event_path(params[:user_id],event.id,{"carpool"=>"false"}) %>'">
-          <td><%= event.description %></td>
-          <td><%= event.time.strftime("%I:%M%p").downcase %></td>
-          <td>
-              <%= link_to 'Join', user_messages_path(event, params[:user_id]), class: 'btn btn-default btn-xs'  %>
-              <% if (current_user.id == event.concert.user_id) %>
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                            edit_event_path(event), :class => 'btn btn-default btn-xs' %>
-              <% end %>
-          </td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
+    <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup2</button>
 
+    <div id="user-modal" class="modal fade"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
 
-  <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup2</button>
-
-  <div id="user-modal" class="modal fade"></div>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <%= form_for ([@user, @event]), {controller: "messages"}, html: { :class => "form-horizontal event" } do |f| %>
-
-
-        <td><%= button_to 'Add to Concerts', {action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date}, {class:"btn btn-xs btn-primary"} %></td>
-
-
-          <% if @event.errors.any? %>
-            <div id="error_expl" class="panel panel-danger">
-              <div class="panel-heading">
-                <h3 class="panel-title"><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h3>
+          <%= form_for ([@user, @event]), :html => { :class => "form-horizontal event" } do |f| %>
+            <div class="form-group">
+              <%= f.label :time, :class => 'control-label col-md-1' %>
+              <div class="col-md-10">
+                <%= f.time_select :time, {ampm: true, minute_step: 15} %>
               </div>
-              <div class="panel-body">
-                <ul>
-                <% @event.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
+              <%=f.error_span(:time) %>
+            </div>
+            <div class="form-group">
+              <%= f.label :location, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-10">
+                <%= f.text_field :location, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:location) %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description, :class => 'control-label col-lg-2'%>
+              <div class="col-lg-10">
+                <%= f.text_area :description, :class => 'form-control', rows: 10 %>
+                <%= f.text_field :carpool, value: "a value here in events index" %>
+                <%= f.text_field :concert_id, value: params[:format] %>
+              </div>
+              <%=f.error_span(:description) %>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+                <button type="button" class="btn btn-md btn-primary" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           <% end %>
-          <div class="form-group">
-            <%= f.label :time, :class => 'control-label col-md-1' %>
-            <div class="col-md-10">
-              <%= f.time_select :time, {ampm: true, minute_step: 15} %>
-            </div>
-            <%=f.error_span(:time) %>
-          </div>
-          <div class="form-group">
-            <%= f.label :location, :class => 'control-label col-lg-2' %>
-            <div class="col-lg-10">
-              <%= f.text_field :location, :class => 'form-control' %>
-            </div>
-            <%=f.error_span(:location) %>
-          </div>
-          <div class="form-group">
-            <%= f.label :description, :class => 'control-label col-lg-2'%>
-            <div class="col-lg-10">
-              <%= f.text_area :description, :class => 'form-control', rows: 10 %>
-              <%= f.text_field :carpool, value: "true" %>
-              <%= f.text_field :concert_id, value: params[:format] %>
-            </div>
-            <%=f.error_span(:description) %>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-              <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-              <button type="button" class="btn btn-md btn-primary" data-dismiss="modal">Cancel</button>
-            </div>
-          </div>
-
-        <% end %>
-
+        </div>
       </div>
-
     </div>
-  </div>
+  <% else %>
+    <%= render 'map' %>
+    <%= render '/messages/index' %>
+
   <footer class="fixed_footer">
     <p>&copy; AmpedUp 2016</p>
   </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-<% else %>
-  <%= render 'map' %>
-  <%= render '/messages/index' %>
-
   <footer class="footer">
     <p>&copy; AmpedUp 2016</p>
   </footer>
-<% end %>
+
+  <% end %>
 
 
-  <script>
-  $(document).ready(function(){
-    console.log("hi")
-    $("#confirm_button").hide();
+</div>
 
-    $("#submit").click(function() {
-      $("#confirm_button").show();
-      $("#submit").hide();
+
+
+<script>
+$(document).ready(function(){
+  console.log("hi")
+  $("#confirm_button").hide();
+
+  $("#submit").click(function() {
+    $("#confirm_button").show();
+    $("#submit").hide();
+  });
+
+  $(".removeOnFocus").each(function(){
+    this.data = new Object(); //TODO don't overwrite previous data
+    this.data.value = this.value;
+
+    $(this).focus(function(){
+      if (this.value == this.data.value)
+      this.value = '';
     });
-
-    $(".removeOnFocus").each(function(){
-      this.data = new Object(); //TODO don't overwrite previous data
-      this.data.value = this.value;
-
-      $(this).focus(function(){
-        if (this.value == this.data.value)
-        this.value = '';
-      });
-      $(this).blur(function(){
-        if (this.value == '')
-        this.value = this.data.value;
-      });
+    $(this).blur(function(){
+      if (this.value == '')
+      this.value = this.data.value;
     });
   });
-  </script>
+});
+</script>

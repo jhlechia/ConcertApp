@@ -16,3 +16,11 @@
 dl {
     margin-left: 75px;
 }
+
+#remove-btn {
+  background-color: #9c2c86;
+}
+
+#remove-btn:hover {
+  background-color: 	#0fcdf2;
+}

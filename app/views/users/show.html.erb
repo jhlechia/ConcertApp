@@ -1,23 +1,22 @@
 <%- model_class = User -%>
 <div class="profile_page">
-<div class="page-header">
-  <h1 class="hello_user"> Hello, <%=@user.name%></h1>
-</div>
+  <div class="page-header">
+    <h1 class="hello_user"> Hello, <%=@user.name%></h1>
+  </div>
 
-<div class="profile_pic">
-<%= image_tag @user.image.url(:medium) %>
-</div>
-
-<dl class="profile_info">
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @user.username %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-  <br>
-  <dd><%= link_to 'Add Concert', new_user_concert_path(@user), :class => 'btn btn-default' %>
+  <div class="profile_pic">
+  <%= image_tag @user.image.url(:medium) %>
+  <dl class="profile_info">
+    <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+    <dd><%= @user.username %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+    <dd><%= @user.email %></dd>
+    <br>
+    <dd><%= link_to 'Add Concert', new_user_concert_path(@user), :class => 'btn btn-default' %>
       <%= link_to 'Edit Profile', edit_user_path(@user), :class => 'btn btn-default' %></dd>
-</dl>
-</div>
+    </dl>
     </div>
+  </div>
+</div>
 
 <%= render 'concerts/index' %>

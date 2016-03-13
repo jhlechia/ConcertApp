@@ -6,7 +6,7 @@
 
 /*.page-header {
   text-align: center;
-}
+}*/
 
 .dl-horizontal {
   display: inline-block;
@@ -18,8 +18,9 @@ h1 {
 
 .profile_info {
 float: right;
-margin-right: 45%;
+margin-right: 40%;
+}
 
 .profile_pic {
   margin-left: 10%;
-}*/
+}

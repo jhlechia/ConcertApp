@@ -6,16 +6,17 @@ class EventsController < ApplicationController
   def index
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
-    
+    @event = Event.new
+    @message = Message.new
 
     @messages = []
     @message = Message.new
 
-    if params[:carpool] == true
+    if params[:carpool] == "true"
       @events = Event.where(is_carpool: true)
       p "<>"*44
       p @events
-      @event.each do |e|
+      @events.each do |e|
         @messages += e.messages
       end
     else

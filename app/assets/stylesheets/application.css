@@ -58,8 +58,8 @@
    color: black;
  }
 
- td i a:hover {
-   background-color: none;
+  td a:hover {
+   background-color: transparent;
  }
 
  .dl-horizontal img {
@@ -68,6 +68,10 @@
 
 .logo-pic {
   float:left;
+}
+
+.page-header {
+  margin-bottom: 0;
 }
 
 
@@ -91,10 +95,15 @@
    margin-left: 15%;
  }
 
+ #myBtn {
+   margin-top: 5px;
+ }
+
  .btn-primary, .btn-default {
    background-color: #0fcdf2;
    border: none;
    color: white;
+   margin-top: 5px;
  }
 
  .btn-primary:hover, .btn-default:hover {

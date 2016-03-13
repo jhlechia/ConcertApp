@@ -35,15 +35,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <%#= form_for [params[:id], params[:format] ,@message],  url: {action: "create", controller:"messages"}, html: { multipart: true, class:"form-horizontal user" } do |f| %>
-
-
 
       <%= form_for @message, url: {controller:'messages', action:'create'}, html: { multipart: true, class:"form-horizontal user" } do |f| %>
-
-
-
-
 
         <div class="form-group">
           <%= f.label "Your Message:", :class => 'control-label col-lg-2' %>

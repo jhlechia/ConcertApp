@@ -36,6 +36,7 @@ class ConcertsController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     @concert = Concert.find_by_id(params[:format])
+    @events = Event.where(concert_id: @concert.id)
     @carpool = "carpool"
   end
 

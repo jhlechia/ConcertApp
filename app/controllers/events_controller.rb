@@ -4,15 +4,21 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    p "SDM   "*44
+
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
+    
+    p "<>"*44
+    p @concert
+
     @event = Event.new
     @message = Message.new
 
     @messages = []
     @message = Message.new
 
-    if params[:carpool] == true
+    if params[:carpool] == "true"
       @events = Event.where(is_carpool: true)
       @events.each do |e|
         @messages += e.messages
@@ -29,7 +35,12 @@ class EventsController < ApplicationController
   def show
 
     @user = User.find_by_id(params[:id])
-    @event = Event.find_by_id(params[:format])
+    if params[:format] != nil
+      @event = Event.find_by_id(params[:format])
+    else
+      @event = @event_from_create
+    end
+
     @concert = Concert.find_by_id(@event.concert_id)
 
     @events = Event.where(concert_id: @concert.id, is_meetup:true)
@@ -61,19 +72,21 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    p "xo"*47
 
-   puts " HEREEEEEE   #{user_id}"
 
-    if params[:carpool]
+    if params[:carpool] == "true"
       @event.is_carpool = true
     else
       @event.is_meetup = true
     end
+
+    p @event
+
     @carpool = params[:carpool]
-    @event.concert_id = params[:user_id]
     respond_to do |format|
       if @event.save
-        format.html { redirect_to user_events_path(params[:user_id], @carpool), notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path({user_id:params[:user_id],format:@event.concert_id,carpool:false}), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -107,13 +120,16 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:is_carpool, :is_meetup, :time, :location, :description, :concert_id)
-    end
+
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:is_carpool, :is_meetup, :time, :location, :description, :concert_id)
+  end
 end

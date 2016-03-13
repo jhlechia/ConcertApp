@@ -49,3 +49,16 @@
  #latlng {
    width: 225px;
  }
+
+ .event-index {
+   padding-bottom: 5%;
+ }
+
+.meetup-container {
+  height: 230px;
+ }
+
+ .event-buttons {
+   text-align: center;
+   margin-bottom: 10%;
+ }

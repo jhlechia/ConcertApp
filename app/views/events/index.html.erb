@@ -6,11 +6,7 @@
 </div>
 
 <% if params[:carpool] == "false" %>
-<<<<<<< HEAD
-<div class="table-container">
-=======
   <div class="table-container meetup-container">
->>>>>>> developer/jamie
   <table class="table">
     <thead>
             <th><%= model_class.human_attribute_name(:description) %></th>
@@ -35,11 +31,10 @@
   </table>
 </div>
 </div>
+<div class="event-buttons">
   <%= link_to 'New Meetup', new_user_event_path(params[:user_id]), class: 'btn btn-primary' %>
+</div>
 
-  <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup2</button>
-</div>
-</div>
 
 
   <div id="user-modal" class="modal fade"></div>

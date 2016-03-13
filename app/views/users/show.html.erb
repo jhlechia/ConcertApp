@@ -1,8 +1,6 @@
 <%- model_class = User -%>
+    <h1> Hello, <%=@user.name%></h1>
 <div class="profile_page">
-  <div class="page-header">
-    <h1 class="hello_user"> Hello, <%=@user.name%></h1>
-  </div>
   <div class="profile_pic">
     <%= image_tag @user.image.url(:medium) %>
   </div>
@@ -74,3 +72,6 @@
   </div>
 
   <%= render 'concerts/index' %>
+  <footer class="footer">
+    <p>&copy; AmpedUp 2016</p>
+  </footer>

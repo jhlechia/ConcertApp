@@ -3,24 +3,26 @@
   They will automatically be included in application.css.
 */
 
-
-/*.page-header {
-  text-align: center;
-}*/
-/*
-.dl-horizontal {
-  display: inline-block;
-}
-
-h1 {
-  text-align: center;
-}
-
-.profile_info {
-float: right;
-margin-right: 40%;
+dl {
+    /*flex-basis: 75%;*/
+    text-align: left;
 }
 
 .profile_pic {
-  margin-left: 10%;
-}*/
+    max-width: 250px;
+    min-width: 100px;
+    flex-basis: 25%;
+    width: auto;
+    background-color: grey;
+}
+
+.profile_page {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}

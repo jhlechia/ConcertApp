@@ -4,7 +4,7 @@
 
 <div class="concert-container">
   <dl class="dl-horizontal">
-    <img src="<%= @concert.image%>"/></dd>
+    <img src="<%= @concert.image%>"class="img-responsive"/></dd>
     <dt><strong><%= model_class.human_attribute_name(:artist) %>:</strong></dt>
     <dd><%= @concert.artist %></dd>
     <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
@@ -19,3 +19,6 @@
   </div>
 </div>
 </div>
+<footer class="fixed_footer">
+  <p>&copy; AmpedUp 2016</p>
+</footer>

@@ -1,3 +1,4 @@
+<div class="event-container">
 <%- model_class = Event -%>
 
 <div class="current-concert text-center">
@@ -7,7 +8,7 @@
     <li><h4><%= @concert.date.strftime("%A, %b %d") %></h4></li>
     </ul>
   </div>
-  
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
@@ -34,3 +35,4 @@
 <% end %>
 
 <%= render 'messages/index'%>
+</div>

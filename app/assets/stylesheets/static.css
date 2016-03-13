@@ -3,11 +3,6 @@
   They will automatically be included in application.css.
 */
 
-.top-div {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 #login {
   text-align: center;
 }

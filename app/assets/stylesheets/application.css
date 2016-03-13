@@ -25,6 +25,15 @@
   font-weight: 300;
   }
 
+  .mycontainer {
+    height: 100%;
+  }
+
+  .top-div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
  .footer {
    bottom: 0;
    /*position: absolute;*/
@@ -36,7 +45,7 @@
    width: 100%;
  }
 
- .fixed_footer {
+ /*.fixed_footer {
    bottom: 0;
    position: absolute;
    text-align: center;
@@ -45,7 +54,7 @@
    color: #0fcdf2;
    background-color: black;
    width: 100%;
- }
+ }*/
 
  footer p {
    padding-bottom: 0;

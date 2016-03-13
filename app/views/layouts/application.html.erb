@@ -80,6 +80,9 @@
       </footer>
     </div>
     <%= params %>
+    <% if logged_in? %>
+      <%= current_user.id %>
+    <% end %>
     <br>
   </body>
 </html>

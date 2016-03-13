@@ -4,10 +4,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
+    
+
     @messages = []
-    @event = Event.find_by_id(params[:format])
     @message = Message.new
 
     if params[:carpool] == true

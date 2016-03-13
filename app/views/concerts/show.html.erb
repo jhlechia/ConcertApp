@@ -3,24 +3,6 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-
-<%= link_to 'Carpool', event_path(params[:id],@concert, carpool: true), class: 'btn btn-primary' %>
-<%= link_to 'Meetup', user_events_path(params[:id], @concert, carpool: false), class: 'btn btn-primary' %>
-<div class="col-md-6">
-  <div class="col-md-12">
-  <dl class="dl-horizontal">
-    <dt><strong><%= model_class.human_attribute_name(:artist) %>:</strong></dt>
-    <dd><%= @concert.artist %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
-    <dd><%= @concert.venue %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-    <dd><%= @concert.date.strftime("%A, %b %d at %I %p") %></dd>
-    <br>
-    <dd><%= link_to 'Carpool', user_events_path(@concert, @carpool), class: 'btn btn-primary' %>
-    <%= link_to 'Meetup', user_events_path(@concert), class: 'btn btn-primary' %></dd>
-  </dl>
-  </div>
-</div>
 <div class="concert-container">
   <dl class="dl-horizontal">
     <dt><strong><%= model_class.human_attribute_name(:artist) %>:</strong></dt>
@@ -32,8 +14,8 @@
   </dl>
 
   <div class="button-container">
-    <%= link_to 'Carpool', user_events_path(params[:id],@concert, carpool: true), class: 'btn btn-primary' %>
-    <%= link_to 'Meetup', user_events_path(params[:id], @concert, carpool: false), class: 'btn btn-primary' %>
+    <%= link_to 'Carpool', user_events_path(current_user.id,@concert, carpool: true), class: 'btn btn-primary' %>
+    <%= link_to 'Meetup', user_events_path(current_user.id, @concert, carpool: false), class: 'btn btn-primary' %>
   </div>
 </div>
 </div>

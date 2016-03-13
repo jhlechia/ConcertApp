@@ -12,13 +12,14 @@ class EventsController < ApplicationController
     @messages = []
     @message = Message.new
 
-    if params[:carpool] == "true"
+    if params[:carpool] == true
       @events = Event.where(is_carpool: true)
       @events.each do |e|
         @messages += e.messages
-        p @messages
       end
     else
+      p "<>"*44
+      p @concert
       @events = Event.where(is_meetup: true, concert_id:@concert.id)
     end
   end

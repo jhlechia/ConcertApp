@@ -25,8 +25,20 @@
   font-weight: 300;
   }
 
- footer {
+ .footer {
    bottom: 0;
+   /*position: absolute;*/
+   text-align: center;
+   padding-top: 15px;
+   padding-bottom: 10px;
+   color: #0fcdf2;
+   background-color: black;
+   width: 100%;
+ }
+
+ .fixed_footer {
+   bottom: 0;
+   position: absolute;
    text-align: center;
    padding-top: 15px;
    padding-bottom: 10px;
@@ -72,6 +84,7 @@
 
 .page-header {
   margin-bottom: 0;
+  border: none;
 }
 
 
@@ -127,10 +140,6 @@
  #our-nav {
    padding-left: 0;
    margin-left: 0;
- }
-
- .footer {
-   padding: 0;
  }
 
 .navbar {

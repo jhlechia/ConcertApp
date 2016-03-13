@@ -20,16 +20,11 @@ class MessagesController < ApplicationController
     @message = Message.new
     p @message
     @event = Event.find_by_id(params[:user_id])
-    p "event: "+@event
     @events = Event.where(is_meetup: true)
-    p "events: "+@events
     @concert = Concert.where(id: @event)
-    p "concert"+@concert
     @concerts = Concert.where(artist: @concert.artist, time: @concert.datetime)
-    p "concerts"+@concerts
     @message.event_id = @event.id
     @messages = Message.where(event_id: @event.id)
-    p "messages"+@messages
 
   end
 

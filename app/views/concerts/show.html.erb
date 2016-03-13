@@ -12,5 +12,5 @@
   <dd><%= @concert.date.strftime("%A, %b %d at %I %p") %></dd>
 </dl>
 
-<%= link_to 'Carpool', event_path(params[:id],@concert, carpool: true), class: 'btn btn-primary' %>
+<%= link_to 'Carpool', user_events_path(params[:id],@concert, carpool: true), class: 'btn btn-primary' %>
 <%= link_to 'Meetup', user_events_path(params[:id], @concert, carpool: false), class: 'btn btn-primary' %>

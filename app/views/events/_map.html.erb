@@ -19,16 +19,16 @@
   <div id='map'></div>
 </div>
 
-<% @events.each do |event| %>
-<div class="lats" style="display: none;">
-  <%= event.get_lat %>
-</div>
-<div class="lngs" style="display: none;">
-  <%= event.get_lng %>
-</div>
-<br/>
+<% if @events.count<1 %>
+  <% @events.each do |event| %>
+    <div class="lats" style="display: none;">
+      <%= event.get_lat %>
+    </div>
+    <div class="lngs" style="display: none;">
+      <%= event.get_lng %>
+    </div>
+    <br/>
   <% end %>
+<% end %>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2J6ZL433xkOnMv5zhsr7sQkGg4TYP0Dg&callback=initMap"
-async defer>
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2J6ZL433xkOnMv5zhsr7sQkGg4TYP0Dg&callback=initMap" async defer></script>

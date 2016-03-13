@@ -62,9 +62,14 @@
    background-color: none;
  }
 
+ .dl-horizontal img {
+   margin-bottom: 10%;
+ }
+
 .logo-pic {
   float:left;
 }
+
 
  .concert-li-container {
    width: 100%;

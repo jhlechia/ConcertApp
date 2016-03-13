@@ -2,15 +2,20 @@
 <div class="page-header">
 </div>
 
+<div class="pic-container">
+  <dl class="dl-horizontal">
+<img src="<%= @concert.image%>"/>
+  </div>
+</div>
+
 <div class="concert-container">
   <dl class="dl-horizontal">
-    <img src="<%= @concert.image%>"/></dd>
     <dt><strong><%= model_class.human_attribute_name(:artist) %>:</strong></dt>
     <dd><%= @concert.artist %></dd>
     <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
     <dd><%= @concert.venue %></dd>
     <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
-    <dd><%= @concert.date%></dd>
+    <dd><%= @concert.date.strftime("%A, %b %d at %I %p")%></dd>
   </dl>
 
   <div class="button-container">

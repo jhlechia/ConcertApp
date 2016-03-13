@@ -1,7 +1,7 @@
 <div class="concert-index">
 <%- model_class = Concert -%>
 <div class="page-header">
-  <h1 class="concert_title"><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1 class="concert_title">Your Concerts</h1>
 </div>
 <div class="table-container">
 <table class="table">
@@ -25,7 +25,7 @@
           <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
           <% end %>
           <% unless @hide_buttons %>
-          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary" %></td>
+          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary", id: "remove-btn" %></td>
           <td><%= link_to user_events_path(concert, {format:"carpool"}) do %><i class="fa fa-car fa-2x"></i><% end %></td>
           <td><%= link_to user_events_path(@user) do %><i class="fa fa-users fa-2x"></i><% end %></td>
           <% end %>

@@ -4,35 +4,32 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    # @events = Event.all
-    @concert = Concert.find_by(id: params[:user_id])
-    @events = Event.where(concert_id: @concert.id)
-    @event = Event.find_by(concert_id: @concert.id)
+    @user = User.find_by_id(current_user.id)
+    @concert = Concert.find_by_id(params[:format])
+    @event = Event.new
+    @message = Message.new
 
+    @messages = []
+    @message = Message.new
 
-    if Message.count!=0
-      @messages = Message.where(event_id: @event.id)
-    end
-
-
-    if (params[:format] == 'carpool')
-      @events = @events.where(is_carpool:true)
-      @carpool = true
-      @hide_new_meetup_button = true
-      @hide_carpool_list = true
+    if params[:carpool] == "true"
+      @events = Event.where(is_carpool: true)
+      p "<>"*44
+      p @events
+      @events.each do |e|
+        @messages += e.messages
+      end
     else
-      @events = @events.where(is_meetup:true)
+      @events = Event.where(is_meetup: true, concert_id:@concert.id)
     end
-
-
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
 
-    @user = User.find_by_id(params[:format])
-    @event = Event.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
+    @event = Event.find_by_id(params[:format])
     @concert = Concert.find_by_id(@event.concert_id)
 
     @events = Event.where(concert_id: @concert.id, is_meetup:true)
@@ -40,29 +37,6 @@ class EventsController < ApplicationController
     @messages = Message.where(event_id:@event.id)
     @carpool = params[:carpool]
     @message = Message.new
-
-    p "-_"*47
-    p @user
-    p "user"
-    p @concert
-    p "concert"
-    p @concerts
-    p "concerts"
-    p @event
-    p "event"
-    p @events
-    p "events"
-    p @messages
-    p "messages"
-
-
-    # @events = []
-    # # @concerts.each do |c|
-    # #   @events += c.events
-    # # end
-    # p "<>"*47
-    # p @events
-    # @messages = Message.where()
 
   end
 

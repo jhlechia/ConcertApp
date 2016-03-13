@@ -1,7 +1,7 @@
 <div class="concert-index">
 <%- model_class = Concert -%>
 <div class="page-header">
-  <h1 class="concert_title"><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1 class="concert_title">Your Concerts</h1>
 </div>
 <div class="table-container">
 <table class="table">
@@ -18,16 +18,17 @@
   <tbody>
     <% @concerts.each do |concert| %>
       <tr>
-          <td href onclick="location.href='<%= concert_path(concert,params[:id]) %>'"><%= concert.artist %></td>
-          <td href onclick="location.href='<%= concert_path(concert,params[:id]) %>'"><%= concert.venue %></td>
-          <td href onclick="location.href='<%= concert_path(concert,params[:id]) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
+          <td href onclick="location.href='<%= concert_path(current_user.id, concert) %>'"><%= concert.artist %></td>
+          <td href onclick="location.href='<%= concert_path(current_user.id, concert) %>'"><%= concert.venue %></td>
+          <td href onclick="location.href='<%= concert_path(current_user.id, concert) %>'"><%= concert.date.strftime("%A, %b %d at %I %p") %></td>
           <% unless @hide_add_to_concerts %>
-          <td><%= button_to 'Add to Concerts', action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date %></td>
+            <td><%= button_to 'Add to Concerts', {action:"create", controller:"concerts", user_id: params[:user_id], artist: concert.artist, venue: concert.venue, date: concert.date}, {class:"btn btn-xs btn-primary"} %></td>
           <% end %>
           <% unless @hide_buttons %>
-          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary" %></td>
+          <td><%= link_to 'Remove', concert_path(concert, @user), method: :delete, class: "btn btn-sm btn-primary", id: "remove-btn" %></td>
           <td><%= link_to user_events_path(concert, {format:"carpool"}) do %><i class="fa fa-car fa-2x"></i><% end %></td>
           <td><%= link_to user_events_path(@user) do %><i class="fa fa-users fa-2x"></i><% end %></td>
+
           <% end %>
 
       </tr>

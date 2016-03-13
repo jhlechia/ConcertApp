@@ -1,15 +1,25 @@
 <%- model_class = Event -%>
 <% unless @hide_carpool_list %>
+
+<div class="current-concert text-center">
+  <ul>
+    <li><h4><%= @concert.artist %></h4></li>
+    <li><th><h4><%= @concert.venue %></li>
+    <li><h4><%= @concert.date.strftime("%A, %b %d") %></h4></li>
+    </ul>
+  </div>
+
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
   </div>
+
   <table class="table table-striped table-hover">
     <thead>
-            <th><%= model_class.human_attribute_name(:description) %></th>
-            <th><%= model_class.human_attribute_name(:location) %></th>
-            <th><%= model_class.human_attribute_name(:time) %></th>
-            <th><%= model_class.human_attribute_name(:concert_id) %></th>
-            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:concert_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </thead>
     <tbody>
       <% @events.each do |event| %>
@@ -33,24 +43,44 @@
                             :class => 'btn btn-xs btn-danger' %>
               </td>
           </tr>
+      <!-- <tr onclick="location.href='<%= event_path(params[:user_id],event,{"carpool"=>"false"}) %>'">
+        <td><%#= event.description %></td>
+        <td><%#= event.location %></td>
+        <% if event.time %>
+        <td><%#= event.time.strftime("%I:%M%p").downcase %></td>
+        <% else %>
+        <td><%= event.time %></td>
+        <% end %>
+        <td><%= event.concert_id %></td>
+        <td>
+          <%#= link_to 'Join', user_messages_path(event, params[:user_id]), class: 'btn btn-default btn-xs'  %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          edit_event_path(event), :class => 'btn btn-default btn-xs' %>
+          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          event_path(event),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr> -->
       <% end %>
     </tbody>
   </table>
-<% end %>
+  <% end %>
 
 
-<% unless @hide_new_meetup_button %>
+  <% unless @hide_new_meetup_button %>
   <%= link_to 'New Meetup', new_user_event_path(params[:user_id]), class: 'btn btn-primary' %>
 
 
-<% end %>
+  <% end %>
 
-<% if @carpool %>
+  <% if @carpool %>
   <%= render 'map' %>
   <%= render '/messages/carpool_messages' %>
-<% end %>
+  <% end %>
 
-<script>
+  <script>
   $(document).ready(function(){
     console.log("hi")
     $("#confirm_button").hide();
@@ -62,16 +92,16 @@
 
     $(".removeOnFocus").each(function(){
       this.data = new Object(); //TODO don't overwrite previous data
-       this.data.value = this.value;
+      this.data.value = this.value;
 
-       $(this).focus(function(){
-           if (this.value == this.data.value)
-               this.value = '';
-       });
-       $(this).blur(function(){
-           if (this.value == '')
-               this.value = this.data.value;
-       });
+      $(this).focus(function(){
+        if (this.value == this.data.value)
+        this.value = '';
+      });
+      $(this).blur(function(){
+        if (this.value == '')
+        this.value = this.data.value;
+      });
     });
   });
-</script>
+  </script>

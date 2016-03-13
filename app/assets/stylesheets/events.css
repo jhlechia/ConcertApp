@@ -3,12 +3,22 @@
   They will automatically be included in application.css.
 */
 
+ h4 {
+   margin-top: 20px;
+  text-align: center;
+ }
+ h5 {
+  margin-top: 50px;
+  text-align: center;
+  }
+
  #map {
    height: 85%;
    width: auto;
  }
 
  #map-container {
+   width: 50%;
    overflow: auto;
    height: 100vh;
    border-radius: 16px 16px;

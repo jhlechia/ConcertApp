@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'login', to: 'static#home'
   post 'login', to: 'sessions#create'
+  get 'logout', to: 'static#home'
   post 'logout', to: 'sessions#destroy'
 
   get 'search_concerts', to: 'concerts#search'

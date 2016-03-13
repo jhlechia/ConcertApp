@@ -2,3 +2,24 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+
+/*.page-header {
+  text-align: center;
+}
+
+.dl-horizontal {
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+}
+
+.profile_info {
+float: right;
+margin-right: 45%;
+
+.profile_pic {
+  margin-left: 10%;
+}*/

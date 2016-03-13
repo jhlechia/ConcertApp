@@ -70,6 +70,11 @@
           <%= f.label :description, :class => 'control-label col-lg-2' %>
           <div class="col-lg-10">
             <%= f.text_field :description, :class => 'form-control' %>
+            <%= f.text_field :is_carpool, value: true %>
+            <%= f.text_field :concert_id, value: params[:format] %>
+            <%= f.text_field :carpool, value: "true" %>
+
+
           </div>
           <%=f.error_span(:description) %>
         </div>

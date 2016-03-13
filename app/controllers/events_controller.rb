@@ -8,15 +8,11 @@ class EventsController < ApplicationController
 
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
-    
+
     p "<>"*44
     p @concert
 
-    @event = Event.new
-    @message = Message.new
-
     @messages = []
-    @message = Message.new
 
     if params[:carpool] == "true"
       @events = Event.where(is_carpool: true)
@@ -24,10 +20,15 @@ class EventsController < ApplicationController
         @messages += e.messages
       end
     else
-      p "<>"*44
-      p @concert
       @events = Event.where(is_meetup: true, concert_id:@concert.id)
     end
+    p "<>"*44
+    p @events
+    p "<>"*44
+    p @messages if !nil
+
+    @event = Event.new
+    @message = Message.new
   end
 
   # GET /events/1
@@ -83,10 +84,10 @@ class EventsController < ApplicationController
 
     p @event
 
-    @carpool = params[:carpool]
     respond_to do |format|
       if @event.save
-        format.html { redirect_to user_events_path({user_id:params[:user_id],format:@event.concert_id,carpool:false}), notice: 'Event was successfully created.' }
+
+        format.html { redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,event_id:@event.id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

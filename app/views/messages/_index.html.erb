@@ -6,22 +6,21 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:body) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @messages.each do |message| %>
       <tr>
         <td><%= link_to message.body, message_path(message) %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_message_path(message), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      message_path(message),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_message_path(message), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        message_path(message),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
       </tr>
     <% end %>
   </tbody>
@@ -49,15 +48,9 @@
           <%= f.label "Your Message:", :class => 'control-label col-lg-2' %>
           <div class="col-lg-10">
             <%= f.text_area :body, class: 'form-control', rows: 10 %>
-
-
-
-
-
-
-
+            <%= f.text_field :user_id, value: params[:id] %>
+            <%= f.text_field :event_id, value: params[:format] %>
           </div>
-          <%= f.text_field :user_id, value: params[:id] %>
 
           <%=f.error_span(:body) %>
         </div>

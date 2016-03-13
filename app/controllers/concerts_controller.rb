@@ -9,7 +9,7 @@ class ConcertsController < ApplicationController
     artist = params[:artist_name].gsub(" ","+")
     @user = User.find(params[:user_id])
     artist = 'kaka' if artist.nil?
-    puts " Here is my artist #{artist.inspect}"
+    puts "Here is my artist #{artist.inspect}"
     @response = HTTParty.get('http://www.nvivo.es/api/request.php?api_key=8d2007934293df8cbc2abe6192ee0f1b&method=artist.getEvents&artist='+artist+'&country_iso=us&format=json')
     @json = JSON.parse(@response.body).with_indifferent_access
 
@@ -56,7 +56,7 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
-    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], user_id:params[:user_id])
+    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], image:params[:image], user_id:params[:user_id])
     @concerts = Concert.all
     @user = User.find(params[:user_id])
 

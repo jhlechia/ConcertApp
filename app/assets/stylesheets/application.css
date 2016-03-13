@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
-  body, td, p, a {
+  body, td, p, a, li {
    font-family: 'Poppins', sans-serif;
+  }
+
+  h1 {
+    text-align: center;
   }
 
   p {
@@ -22,6 +26,8 @@
   }
 
  footer {
+   /*position: absolute;*/
+   bottom: 0;
    text-align: center;
    padding-top: 15px;
    padding-bottom: 10px;
@@ -55,6 +61,21 @@
 
  td i a:hover {
    background-color: none;
+ }
+
+ .concert-li-container {
+   width: 100%;
+   text-align: center;
+ }
+
+ .current-concert ul {
+   list-style: none;
+   display: inline-flex;
+   padding-left: 0;
+ }
+
+ .current-concert li {
+   padding-left: 15px;
  }
 
  .table-container {

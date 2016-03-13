@@ -12,6 +12,14 @@
   text-align: center;
   }
 
+  .meetup-container {
+    height: 67vh;
+  }
+
+  .event-container {
+    height: 78vh;
+  }
+
  #map {
    height: 85%;
    width: auto;

@@ -18,7 +18,7 @@
 
   .left-guitar {
     float: left;
-    height: 350px;
+    height: 370px;
     width: auto;
     margin-left: 3%;
   }
@@ -29,11 +29,10 @@
   }
 
   .right-guitar {
-    height: 350px;
+    height: 390px;
     width: auto;
     float: right;
-    margin-bottom: 20px;
-    /*margin-right: 3%; */
+    margin-right: 1%;
   }
 
   .meetup-container {

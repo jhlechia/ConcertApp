@@ -65,7 +65,7 @@
  #map-container {
    width: 50%;
    overflow: auto;
-   height: 100vh;
+   height: 70vh;
    border-radius: 16px 16px;
    border-color: #fff;
    border-style: solid;

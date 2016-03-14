@@ -14,11 +14,11 @@
         </thead>
         <tbody>
           <% @events.each do |event| %>
-            <tr onclick="location.href='<%= event_path(params[:user_id],event.id,{"carpool"=>"false"}) %>'">
+            <tr onclick="location.href='<%= event_path(current_user.id,event.id,{ carpool: 'false'}) %>'">
               <td><%= event.description %></td>
               <td><%= event.time.strftime("%I:%M%p").downcase %></td>
               <td>
-                  <%= link_to 'Join', user_messages_path(event, params[:user_id]), class: 'btn btn-default btn-xs'  %>
+                  <%= link_to 'Join', user_messages_path(current_user.id, event.id,{carpool: "false"}), class: 'btn btn-default btn-xs'  %>
                   <% if (current_user.id == event.concert.user_id) %>
                     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                                 edit_event_path(event), :class => 'btn btn-default btn-xs' %>
@@ -38,7 +38,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
 
-          <%= form_for ([@user, @event]), :html => { :class => "form-horizontal event" } do |f| %>
+          <%= form_for ([@user, @event]), html: { class: "form-horizontal event" } do |f| %>
             <div class="form-group">
               <%= f.label :time, :class => 'control-label col-md-1' %>
               <div class="col-md-10">
@@ -57,7 +57,7 @@
               <%= f.label :description, :class => 'control-label col-lg-2'%>
               <div class="col-lg-10">
                 <%= f.text_area :description, :class => 'form-control', rows: 10 %>
-                <%= f.text_field :carpool, value: "a value here in events index" %>
+                <%= f.text_field :carpool, value: "false" %>
                 <%= f.text_field :concert_id, value: params[:format] %>
               </div>
               <%=f.error_span(:description) %>

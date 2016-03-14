@@ -6,7 +6,7 @@
     <input id="address" class="removeOnFocus"type="textbox" value="Enter Address">
     <%= form_for [@user, @event], url: {action: "create"}, html: {:method => :post} do |f| %>
     <input type="hidden" name="id" value="<%= @concert.id %>">
-    <input type="hidden" name="user_id" value="<%=params[:user_id]%>">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
     <input type="hidden" name="carpool" value="carpool">
     <input id="submit" type="button" value="Submit Address">
     <%= f.submit 'Confirm Pin', :id => 'confirm_button'%>

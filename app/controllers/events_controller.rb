@@ -5,10 +5,10 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     p "SDM   "*44
-
+    @event = Event.find_by_id(params[:event_id])
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
-
+    p @concert
     p "<>"*44
     p @concert
 
@@ -84,16 +84,18 @@ class EventsController < ApplicationController
 
     p @event
 
-    respond_to do |format|
-      if @event.save
-
-        format.html { redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,event_id:@event.id), notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+    if @event.save
+      if params[:carpool] == "true"
+        p "$$$$$$$$$$$$  redirecting from carpool true $$$$$$$$$$$$$$$$$$"
+        redirect_to user_events_path(current_user.id), notice: 'Event was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        p "%%%%%%%%%%%%%   redirecting from carpool false %%%%%%%%%%%%%%%%"
+        redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,carpool:"false", event_id:@event.id), notice: 'Event was successfully created.'
       end
+    else
+      render :new
     end
+
   end
 
   # PATCH/PUT /events/1

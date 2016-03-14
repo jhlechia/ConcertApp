@@ -81,8 +81,8 @@ dl-horizontal {
 .concert-index {
   margin-top: -60px;
 }
-
-/*#concert-lookup-results {
+/*
+concert-lookup-results {
   width: 100%;
   max-width: 100%;
   content: center;

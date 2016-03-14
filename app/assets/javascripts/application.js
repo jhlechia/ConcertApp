@@ -28,7 +28,8 @@ var show_spinner = function(){
 }
 
 var hide_flash = function(){
-  $('.alert').hide();
+  $('div.alert').remove();
+   console.log("Xxxxxxxxxxxxxxxxxxxxxxxxxx");
 }
 
 

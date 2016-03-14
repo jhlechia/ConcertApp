@@ -227,7 +227,7 @@
 }
 
 .well.results-block {
-  display:flex;
+  display:block;
 }
 
 #search-submit {

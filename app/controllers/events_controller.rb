@@ -4,15 +4,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    p "SDM   "*44
     @event = Event.find_by_id(params[:event_id])
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
-    p @concert
-    p "<>"*44
-    p @concert
-
-
     if (params[:carpool] == "true")
       @messages = Message.new
       @events = Event.where(is_carpool: true, concert_id: @concert.id)
@@ -20,11 +14,6 @@ class EventsController < ApplicationController
     else
       @events = Event.where(is_meetup: true, concert_id: @concert.id)
     end
-    p "<>"*44
-    p @events
-    p "<>"*44
-    p @messages if !nil
-
     @event = Event.new
     @message = Message.new
   end
@@ -34,13 +23,8 @@ class EventsController < ApplicationController
   def show
 
     @user = User.find_by_id(params[:id])
-    # if params[:format] != nil
-    #   @event = Event.find_by_id(params[:format])
-    # end
     @event = Event.find_by_id(params[:format])
-
     @concert = Concert.find_by_id(@event.concert_id)
-
     @events = Event.where(concert_id: @concert.id, is_meetup:true)
     @concerts = Concert.where(artist:@concert.artist, date:@concert.date)
     @messages = Message.where(event_id:@event.id)
@@ -81,18 +65,11 @@ class EventsController < ApplicationController
 
     end
 
-    p "xo"*47
-
-
-    p @event
-
     if @event.save
       if params[:carpool] == "true" || params[:carpool] == "carpool"
-        p "$$$$$$$$$$$$  redirecting from carpool true $$$$$$$$$$$$$$$$$$"
         redirect_to user_events_path(current_user.id, carpool: "true", format: params[:concert_id]), notice: 'Event was successfully created.'
       else
-        p "%%%%%%%%%%%%%   redirecting from carpool false %%%%%%%%%%%%%%%%"
-        redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,carpool:"false", event_id:@event.id), notice: 'Event was successfully created.'
+        redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,carpool:"false", event_id:@event.id), notice: 'You dropped a pin!'
       end
     else
       render :new
@@ -106,10 +83,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -120,7 +95,6 @@ class EventsController < ApplicationController
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

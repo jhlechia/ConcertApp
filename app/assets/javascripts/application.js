@@ -26,3 +26,11 @@ var hide_spinner = function(){
 var show_spinner = function(){
   $('#spinner').show();
 }
+
+var hide_name = function(){
+  $('#artist_name').val("");
+}
+
+var use_flash = function(msg){
+  $('#alert').html('<button type="button" class="close" data-dismiss="alert">×</button>Sorry');
+}

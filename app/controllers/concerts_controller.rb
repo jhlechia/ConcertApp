@@ -18,7 +18,12 @@ class ConcertsController < ApplicationController
       end
     elsif @json['response']['gigs'][0] == nil
       respond_to do |format|
-        format.js {  render :js => "hide_spinner();" }
+        flash.now[:alert] = 'Sorry, there are no events scheduled for that artist.'
+        format.js {
+                  flash.now[:alert] = 'Sorry, there are no events scheduled for that artist.'
+                  render :js => "hide_spinner();
+                                  hide_name();
+                                  "}
       end
     end
 
@@ -62,7 +67,7 @@ class ConcertsController < ApplicationController
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @user, notice: 'Concert was successfully added.' }
+        format.html { redirect_to @user, notice: 'You added a concert to your list!' }
       else
         format.html { render :new }
       end

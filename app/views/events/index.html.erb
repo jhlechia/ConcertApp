@@ -1,3 +1,4 @@
+<div class="event-container">
 <div class="event-index">
   <%- model_class = Event -%>
 
@@ -5,10 +6,13 @@
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
   </div>
+  <div class="left-guitar"><img src="http://i.imgur.com/Feymelw.png"/></div>
+  <div class= "right-guitar"><img src="http://i.imgur.com/VKqPkpY.png"/></div> 
     <div class="table-container meetup-container">
     <table class="table">
       <thead>
               <th><%= model_class.human_attribute_name(:description) %></th>
+              <th><%= model_class.human_attribute_name(:location) %></th>
               <th><%= model_class.human_attribute_name(:time) %></th>
               <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </thead>
@@ -16,6 +20,7 @@
         <% @events.each do |event| %>
           <tr onclick="location.href='<%= event_path(current_user.id,event.id,{ carpool: 'false'}) %>'">
             <td><%= event.description %></td>
+            <td><%= event.location %></td>
             <td><%= event.time.strftime("%I:%M%p").downcase %></td>
             <td>
                 <%= link_to 'Join', user_messages_path(current_user.id, event.id,{carpool: "false"}), class: 'btn btn-default btn-xs'  %>
@@ -60,8 +65,8 @@
               <%= f.label :description, :class => 'control-label col-lg-2'%>
               <div class="col-lg-10">
                 <%= f.text_area :description, :class => 'form-control', rows: 10 %>
-                <%= f.text_field :carpool, value: "false" %>
-                <%= f.text_field :concert_id, value: params[:format] %>
+                <%= f.hidden_field :carpool, value: "false" %>
+                <%= f.hidden_field :concert_id, value: params[:format] %>
               </div>
               <%=f.error_span(:description) %>
             </div>
@@ -75,6 +80,7 @@
         </div>
       </div>
     </div>
+</div>
 
   <% else %>
     <%= render 'map' %>

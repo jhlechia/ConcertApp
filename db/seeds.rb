@@ -11,7 +11,7 @@ locations = ['26.138,-80.187', '26.108,-80.157', '26.158,-80.147', '26.168,-80.1
   User.create(name: "Bradley Cooper", username: "bcoops10", email: "bcoops@gmail.com", password: "password")
   User.create(name: "Ruby Rose", username: "rubyroo", email: "rrose@gmail.com", password: "password")
 
-
+  
   Concert.create(artist: "Vance Joy", venue: "The Fillmore Miami Beach", date: '2016-03-19T11;30;00+00:00', user_id: 1)
   # Concert.create(artist: "Artist#{c}", venue: "place#{c}", date: DateTime.now, user_id: 1)
 

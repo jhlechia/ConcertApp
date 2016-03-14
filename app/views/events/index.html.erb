@@ -9,6 +9,7 @@
     <table class="table">
       <thead>
               <th><%= model_class.human_attribute_name(:description) %></th>
+              <th><%= model_class.human_attribute_name(:location) %></th>
               <th><%= model_class.human_attribute_name(:time) %></th>
               <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </thead>
@@ -16,6 +17,7 @@
         <% @events.each do |event| %>
           <tr onclick="location.href='<%= event_path(current_user.id,event.id,{ carpool: 'false'}) %>'">
             <td><%= event.description %></td>
+            <td><%= event.location %></td>
             <td><%= event.time.strftime("%I:%M%p").downcase %></td>
             <td>
                 <%= link_to 'Join', user_messages_path(current_user.id, event.id,{carpool: "false"}), class: 'btn btn-default btn-xs'  %>

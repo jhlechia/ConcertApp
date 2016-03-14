@@ -15,8 +15,9 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td>insert username here</td>
-        <td><%= message.body%></td>
+        <td><%= message.body.partition('/~/').first
+ %></td>
+        <td><%= message.body.partition('/~/').last %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,6 +39,8 @@
           <div class="col-lg-10">
             <%= f.text_area :body, rows: 7, :class => 'form-control' %>
             <%= f.hidden_field :event_id, value: params[:format] %>
+            <%= f.hidden_field :username, value: current_user.username %>
+
             <% if params[:carpool] == "true" %>
               <%= f.hidden_field :carpool, value: "true" %>
             <% else %>
@@ -49,7 +52,7 @@
         <div class="form-group">
           <div class="col-lg-offset-2 col-lg-10">
             <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-            
+
           </div>
         </div>
 

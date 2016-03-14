@@ -1,5 +1,5 @@
 class ConcertsController < ApplicationController
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
+  before_action :set_concert, only: [:edit, :update, :destroy]
 
   def self.find_by_artist
 
@@ -14,11 +14,15 @@ class ConcertsController < ApplicationController
 
     if @json['status'] == "error"
       respond_to do |format|
-        format.js {  render :js => "hide_spinner();" }
+        format.js {  render :js => "hide_spinner();
+                                    use_flash_again();" }
       end
     elsif @json['response']['gigs'][0] == nil
       respond_to do |format|
-        format.js {  render :js => "hide_spinner();" }
+        format.js {
+                  render :js => "hide_spinner();
+                                  hide_name();
+                                  use_flash();" }
       end
     end
 
@@ -46,6 +50,7 @@ class ConcertsController < ApplicationController
     @concert = Concert.new
     @concerts = Concert.limit(7).order("RANDOM()")
     @hide_buttons = true
+    @concert_list_title = "Upcoming Concerts"
   end
 
   # GET /concerts/1/edit
@@ -55,14 +60,14 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
-    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], image:params[:image], user_id:params[:user_id])
+    @concert = Concert.new(artist:params[:artist],venue:params[:venue],date:params[:date], image:params[:image], user_id:current_user.id)
     @concerts = Concert.all
     @user = User.find(params[:user_id])
 
 
     respond_to do |format|
       if @concert.save
-        format.html { redirect_to @user, notice: 'Concert was successfully added.' }
+        format.html { redirect_to @user, notice: 'You added a concert to your list!' }
       else
         format.html { render :new }
       end

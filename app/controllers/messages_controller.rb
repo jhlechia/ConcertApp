@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    p "MessagesIndex ?????? "*19
     @event = Event.find_by_id(params[:format])
     @messages = Message.where(event_id: @event.id)
     @user = current_user
@@ -18,7 +17,6 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    p @message
     @event = Event.find_by_id(params[:user_id])
     @events = Event.where(is_meetup: true)
     @concert = Concert.where(id: @event)
@@ -42,10 +40,13 @@ class MessagesController < ApplicationController
       @message.event_id = Event.where(is_carpool: true).last.id
     end
     @message.body = params[:message][:body]
+    @message.body.prepend("/~/").prepend(params[:message][:username])
+    p "SDM      "*19
+    p @message
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to :back,  notice: 'Message was successfully created.' }
+        format.html { redirect_to :back,  notice: 'Your message has been posted!' }
       else
         format.html { render :new }
       end
@@ -58,7 +59,6 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.update(message_params)
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -72,7 +72,6 @@ class MessagesController < ApplicationController
     @message.destroy
     respond_to do |format|
       format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -22,7 +22,7 @@
   <div id='map'></div>
 </div>
 
-<% if @events.count<1 %>
+<% if @events.count > 0 %>
   <% @events.each do |event| %>
     <div class="lats" style="display: none;">
       <%= event.get_lat %>

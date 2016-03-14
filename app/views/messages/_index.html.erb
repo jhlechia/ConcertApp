@@ -27,7 +27,7 @@
   </tbody>
 </table>
 
-<button type="button" class="btn btn-md btn-primary" id="myBtn">Add a post</button>
+<button type="button" class="btn btn-md btn-primary" id="myBtn">Add a Message</button>
 
 <div id="user-modal" class="modal fade"></div>
 <!-- Modal -->
@@ -36,27 +36,28 @@
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-      <%= form_for @message, url: {controller:'messages', action:'create'}, html: { multipart: true, class:"form-horizontal user" } do |f| %>
+      <%= form_for @message, :html => { :class => "form-horizontal event" } do |f| %>
+
 
         <div class="form-group">
           <%= f.label "Your Message:", :class => 'control-label col-lg-2' %>
           <div class="col-lg-10">
-            <%= f.text_area :body, class: 'form-control', rows: 10 %>
-            <%= f.text_field :user_id, value: current_user.id %>
-            <%= f.text_field :event_id, value: params[:format] %>
+            <%= f.text_area :body, rows: 7, :class => 'form-control' %>
+            <%= f.text_field :concert_id, value: params[:format] %>
+            <%= f.text_field :carpool, value: "true" %>
           </div>
-
-          <%=f.error_span(:body) %>
+          <%=f.error_span(:description) %>
         </div>
-
         <div class="form-group">
           <div class="col-lg-offset-2 col-lg-10">
-
-            <%= f.submit "Post", :class => 'btn btn-primary modal-close'%>
-
+            <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      user_messages_path, :class => 'btn btn-default' %>
+          </div>
         </div>
-        </div>
+
       <% end %>
+
     </div>
 
   </div>

@@ -36,7 +36,11 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new
-    @message.event_id = params[:message][:event_id]
+    if params[:message][:carpool] != "true"
+      @message.event_id = params[:message][:event_id]
+    else
+      @message.event_id = Event.where(is_carpool: true).last.id
+    end
     @message.body = params[:message][:body]
 
     respond_to do |format|

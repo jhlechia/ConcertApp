@@ -4,24 +4,31 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    p "SDM   "*44
+    @event = Event.find_by_id(params[:event_id])
     @user = User.find_by_id(current_user.id)
     @concert = Concert.find_by_id(params[:format])
-    @event = Event.new
-    @message = Message.new
+    p @concert
+    p "<>"*44
+    p @concert
 
     @messages = []
-    @message = Message.new
 
-    if params[:carpool] == true
+    if params[:carpool] == "true"
       @events = Event.where(is_carpool: true)
       @events.each do |e|
         @messages += e.messages
       end
     else
-      p "<>"*44
-      p @concert
       @events = Event.where(is_meetup: true, concert_id:@concert.id)
     end
+    p "<>"*44
+    p @events
+    p "<>"*44
+    p @messages if !nil
+
+    @event = Event.new
+    @message = Message.new
   end
 
   # GET /events/1
@@ -29,7 +36,12 @@ class EventsController < ApplicationController
   def show
 
     @user = User.find_by_id(params[:id])
-    @event = Event.find_by_id(params[:format])
+    if params[:format] != nil
+      @event = Event.find_by_id(params[:format])
+    else
+      @event = @event_from_create
+    end
+
     @concert = Concert.find_by_id(@event.concert_id)
 
     @events = Event.where(concert_id: @concert.id, is_meetup:true)
@@ -61,25 +73,29 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    p "xo"*47
 
-   puts " HEREEEEEE   #{user_id}"
 
-    if params[:carpool]
+    if params[:carpool] == "true"
       @event.is_carpool = true
     else
       @event.is_meetup = true
     end
-    @carpool = params[:carpool]
-    @event.concert_id = params[:user_id]
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to user_events_path(params[:user_id], @carpool), notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+
+    p @event
+
+    if @event.save
+      if params[:carpool] == "true"
+        p "$$$$$$$$$$$$  redirecting from carpool true $$$$$$$$$$$$$$$$$$"
+        redirect_to user_events_path(current_user.id), notice: 'Event was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        p "%%%%%%%%%%%%%   redirecting from carpool false %%%%%%%%%%%%%%%%"
+        redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,carpool:"false", event_id:@event.id), notice: 'Event was successfully created.'
       end
+    else
+      render :new
     end
+
   end
 
   # PATCH/PUT /events/1
@@ -107,13 +123,16 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:is_carpool, :is_meetup, :time, :location, :description, :concert_id)
-    end
+
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:is_carpool, :is_meetup, :time, :location, :description, :concert_id)
+  end
 end

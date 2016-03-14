@@ -1,10 +1,9 @@
 <%- model_class = Concert -%>
-<div class="page-header">
-</div>
-
-<div class="pic-container">
-  <dl class="dl-horizontal">
-<img src="<%= @concert.image%>"/>
+<div class="background-pic">
+  <div class="pic-container">
+    <dl class="dl-horizontal">
+      <img src="<%= @concert.image%>"/>
+    </dl>
   </div>
 </div>
 
@@ -23,7 +22,3 @@
     <%= link_to 'Meetup', user_events_path(current_user.id, @concert, carpool: false), class: 'btn btn-primary' %>
   </div>
 </div>
-</div>
-<footer class="fixed_footer">
-  <p>&copy; AmpedUp 2016</p>
-</footer>

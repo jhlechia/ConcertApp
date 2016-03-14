@@ -1,36 +1,40 @@
 <div class="event-index">
   <%- model_class = Event -%>
+
+  <% if params[:carpool] == "false" %>
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
   </div>
-
-  <% if params[:carpool] == "false" %>
-    <div class="table-container">
-      <table class="table">
-        <thead>
-          <th><%= model_class.human_attribute_name(:description) %></th>
-          <th><%= model_class.human_attribute_name(:time) %></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
-        </thead>
-        <tbody>
-          <% @events.each do |event| %>
-            <tr onclick="location.href='<%= event_path(current_user.id,event.id,{ carpool: 'false'}) %>'">
-              <td><%= event.description %></td>
-              <td><%= event.time.strftime("%I:%M%p").downcase %></td>
-              <td>
-                  <%= link_to 'Join', user_messages_path(current_user.id, event.id,{carpool: "false"}), class: 'btn btn-default btn-xs'  %>
-                  <% if (current_user.id == event.concert.user_id) %>
-                    <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                edit_event_path(event), :class => 'btn btn-default btn-xs' %>
-                  <% end %>
-              </td>
+    <div class="table-container meetup-container">
+    <table class="table">
+      <thead>
+              <th><%= model_class.human_attribute_name(:description) %></th>
+              <th><%= model_class.human_attribute_name(:time) %></th>
+              <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr onclick="location.href='<%= event_path(current_user.id,event.id,{ carpool: 'false'}) %>'">
+            <td><%= event.description %></td>
+            <td><%= event.time.strftime("%I:%M%p").downcase %></td>
+            <td>
+                <%= link_to 'Join', user_messages_path(current_user.id, event.id,{carpool: "false"}), class: 'btn btn-default btn-xs'  %>
+                <% if (current_user.id == event.concert.user_id) %>
+                  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                              edit_event_path(event), :class => 'btn btn-default btn-xs' %>
+                <% end %>
+            </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-
+  </div>
+  <div class="event-buttons">
     <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup2</button>
+  </div>
+
+
 
     <div id="user-modal" class="modal fade"></div>
     <!-- Modal -->
@@ -39,6 +43,7 @@
         <div class="modal-content">
 
           <%= form_for ([@user, @event]), html: { class: "form-horizontal event" } do |f| %>
+
             <div class="form-group">
               <%= f.label :time, :class => 'control-label col-md-1' %>
               <div class="col-md-10">
@@ -75,20 +80,7 @@
   <% else %>
     <%= render 'map' %>
     <%= render '/messages/index' %>
-
-  <footer class="fixed_footer">
-    <p>&copy; AmpedUp 2016</p>
-  </footer>
-  <footer class="footer">
-    <p>&copy; AmpedUp 2016</p>
-  </footer>
-
   <% end %>
-
-
-</div>
-
-
 
 <script>
 $(document).ready(function(){

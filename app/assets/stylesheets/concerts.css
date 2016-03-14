@@ -8,6 +8,7 @@
   margin: 0 auto;
   margin-left: 22%;
   height: 73vh;
+  padding-top: 3%;  
 }
 
 .button-container {
@@ -36,4 +37,9 @@ dl-horizontal {
 
 #remove-btn:hover {
   background-color: 	#0fcdf2;
+}
+
+.background-pic {
+  background-image: url("http://goo.gl/DuJpxn");
+  height: 236px;
 }

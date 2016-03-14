@@ -219,6 +219,11 @@
 
 #concert-lookup-results {
   display:none;
+  color: #fff;
+}
+
+#concert-lookup-results h2 {
+  color: #fff;
 }
 
 .well.results-block {

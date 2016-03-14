@@ -12,15 +12,13 @@ class EventsController < ApplicationController
     p "<>"*44
     p @concert
 
-    @messages = []
 
     if params[:carpool] == "true"
-      @events = Event.where(is_carpool: true)
-      @events.each do |e|
-        @messages += e.messages
-      end
+      @messages = Message.new
+      @events = Event.where(is_carpool: true, concert_id: @concert.id)
+      @messages = Message.joins(:event).where('events.is_carpool = true')
     else
-      @events = Event.where(is_meetup: true, concert_id:@concert.id)
+      @events = Event.where(is_meetup: true, concert_id: @concert.id)
     end
     p "<>"*44
     p @events
@@ -36,11 +34,10 @@ class EventsController < ApplicationController
   def show
 
     @user = User.find_by_id(params[:id])
-    if params[:format] != nil
-      @event = Event.find_by_id(params[:format])
-    else
-      @event = @event_from_create
-    end
+    # if params[:format] != nil
+    #   @event = Event.find_by_id(params[:format])
+    # end
+    @event = Event.find_by_id(params[:format])
 
     @concert = Concert.find_by_id(@event.concert_id)
 
@@ -49,6 +46,7 @@ class EventsController < ApplicationController
     @messages = Message.where(event_id:@event.id)
     @carpool = params[:carpool]
     @message = Message.new
+
 
   end
 
@@ -72,15 +70,17 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    if params[:carpool] != "carpool"
+      @event = Event.new(event_params)
+      @event.is_meetup = true
+      @carpool = "true"
+    else
+      @event = Event.new()
+      @event.is_carpool = true
+    end
+
     p "xo"*47
 
-
-    if params[:carpool] == "true"
-      @event.is_carpool = true
-    else
-      @event.is_meetup = true
-    end
 
     p @event
 

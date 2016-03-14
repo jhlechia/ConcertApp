@@ -1,3 +1,4 @@
+<div class="event-container">
 <div class="event-index">
   <%- model_class = Event -%>
 
@@ -5,6 +6,7 @@
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
   </div>
+  <div class="left-guitar"><img src="http://i.imgur.com/Feymelw.png"/></div>
     <div class="table-container meetup-container">
     <table class="table">
       <thead>
@@ -32,6 +34,7 @@
       </table>
     </div>
   </div>
+    <div class="right-guitar"><img src="http://i.imgur.com/VKqPkpY.png"/></div> 
   <div class="event-buttons">
     <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup</button>
   </div>
@@ -77,6 +80,7 @@
         </div>
       </div>
     </div>
+</div>
 
   <% else %>
     <%= render 'map' %>

@@ -16,12 +16,33 @@
     background-image: url('http://i.imgur.com/MBzsuab.jpg');
   }*/
 
+  .left-guitar {
+    float: left;
+    height: 350px;
+    width: auto;
+    margin-left: 3%;
+  }
+
+  .left-guitar img, .right-guitar img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .right-guitar {
+    height: 350px;
+    width: auto;
+    float: right;
+    margin-bottom: 20px;
+    /*margin-right: 3%; */
+  }
+
   .meetup-container {
     height: 67vh;
   }
 
   .event-container {
-    height: 78vh;
+    /*height: 78vh;*/
+    width: 100%;
   }
 
   .map-fields {
@@ -69,7 +90,7 @@
  }
 
  .event-index {
-   padding-bottom: 5%;
+   padding-bottom: 3%;
  }
 
 .meetup-container {

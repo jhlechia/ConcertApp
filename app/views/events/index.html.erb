@@ -1,13 +1,19 @@
 <div class="event-container">
 <div class="event-index">
   <%- model_class = Event -%>
-
+  <div class="current-concert text-center">
+    <ul>
+      <li><h4><%= @concert.artist %></h4></li>
+      <li><th><h4><%= @concert.venue %></li>
+      <li><h4><%= @concert.date.strftime("%A, %b %d") %></h4></li>
+      </ul>
+    </div>  
   <% if params[:carpool] == "false" %>
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
   </div>
   <div class="left-guitar"><img src="http://i.imgur.com/Feymelw.png"/></div>
-  <div class= "right-guitar"><img src="http://i.imgur.com/VKqPkpY.png"/></div> 
+  <div class= "right-guitar"><img src="http://i.imgur.com/VKqPkpY.png"/></div>
     <div class="table-container meetup-container">
     <table class="table">
       <thead>

@@ -8,13 +8,15 @@
 <table class="table">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:body) %></th>
+    <th>User</th>
+    <th><%= model_class.human_attribute_name(:body) %></th>
     </tr>
   </thead>
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= link_to message.body, message_path(message) %></td>
+        <td>insert username here</td>
+        <td><%= message.body%></td>
       </tr>
     <% end %>
   </tbody>

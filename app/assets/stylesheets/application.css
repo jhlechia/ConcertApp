@@ -81,7 +81,15 @@
 
   td a:hover {
    background-color: transparent;
+   text-decoration: none;
+   color: black;
  }
+
+ td a:visited {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+}
 
  .dl-horizontal img {
    margin-bottom: 10%;

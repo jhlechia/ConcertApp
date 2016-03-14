@@ -12,13 +12,11 @@ class EventsController < ApplicationController
     p "<>"*44
     p @concert
 
-    @messages = []
 
     if params[:carpool] == "true"
+      @messages = Message.new
       @events = Event.where(is_carpool: true, concert_id: @concert.id)
-      @events.each do |e|
-        @messages += e.messages
-      end
+      @messages = Message.joins(:event).where('events.is_carpool = true')
     else
       @events = Event.where(is_meetup: true, concert_id: @concert.id)
     end
@@ -48,7 +46,7 @@ class EventsController < ApplicationController
     @messages = Message.where(event_id:@event.id)
     @carpool = params[:carpool]
     @message = Message.new
-    
+
 
   end
 

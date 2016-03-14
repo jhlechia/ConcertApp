@@ -43,8 +43,12 @@
           <%= f.label "Your Message:", :class => 'control-label col-lg-2' %>
           <div class="col-lg-10">
             <%= f.text_area :body, rows: 7, :class => 'form-control' %>
-            <%= f.hidden_field :concert_id, value: params[:format] %>
-            <%= f.hidden_field :carpool, value: "true" %>
+            <%= f.hidden_field :event_id, value: params[:format] %>
+            <% if params[:carpool] == "true" %>
+              <%= f.hidden_field :carpool, value: "true" %>
+            <% else %>
+              <%= f.hidden_field :carpool, value: "false" %>
+            <% end %>
           </div>
           <%=f.error_span(:description) %>
         </div>

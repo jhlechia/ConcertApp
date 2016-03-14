@@ -3,6 +3,13 @@
   They will automatically be included in application.css.
 */
 
+.event-show-info {
+  width: 100%;
+}
+
+.event-show-info dl {
+}
+
 .concert-container {
   width: 500px;
   margin: 0 auto;
@@ -58,28 +65,6 @@ dl-horizontal {
   border: none;
 }
 
-/*.alert-warning {
-  background-image: url("http://i.imgur.com/5RMLfSp.jpg?1");
-  background-repeat: no-repeat;
-  border: none;
-  z-index: 1;
-  background-size: contain;
-  width: 100%;
-  max-height: 560px;
-
-}*/
-/*
-.search-container {
-  justify-content: center;
-  background-image: url("http://i.imgur.com/5RMLfSp.jpg?1");
-  background-repeat: no-repeat;
-  border: none;
-  z-index: 1;
-  background-size: contain;
-  width: 100%;
-  max-height: 560px;
-}*/
-
 #search-container {
   min-height: 80vh;
   max-height: 560px;
@@ -96,8 +81,8 @@ dl-horizontal {
 .concert-index {
   margin-top: -60px;
 }
-
-/*#concert-lookup-results {
+/*
+concert-lookup-results {
   width: 100%;
   max-width: 100%;
   content: center;

@@ -105,3 +105,8 @@
  .event-show {
    text-align: center;
  }
+
+ .current-concert.text-center {
+    border: 1px solid;
+    background-color: #c4cad8;
+}

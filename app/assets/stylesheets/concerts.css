@@ -8,7 +8,7 @@
 }
 
 .event-show-info dl {
-
+}
 
 .concert-container {
   width: 500px;
@@ -63,7 +63,7 @@ dl-horizontal {
   width: 0px;
   background-color: transparent;
   border: none;
-} 
+}
 
 #search-container {
   min-height: 80vh;

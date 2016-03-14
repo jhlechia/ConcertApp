@@ -31,9 +31,8 @@
     </div>
   </div>
   <div class="event-buttons">
-    <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup2</button>
+    <button type="button" class="btn btn-md btn-primary" id="myBtn">New Meetup</button>
   </div>
-
 
 
     <div id="user-modal" class="modal fade"></div>
@@ -77,6 +76,7 @@
         </div>
       </div>
     </div>
+
   <% else %>
     <%= render 'map' %>
     <%= render '/messages/index' %>
@@ -91,6 +91,7 @@ $(document).ready(function(){
     $("#confirm_button").show();
     $("#submit").hide();
   });
+
 
   $(".removeOnFocus").each(function(){
     this.data = new Object(); //TODO don't overwrite previous data

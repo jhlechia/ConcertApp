@@ -5,6 +5,7 @@
 <h5>If you dig a carpool to your gig, enter your pickup location below. Click the button to see the other carpools in your area.</h5>
 <div id='map-container'>
   <div id="floating-panel">
+    <div class="map-fields">
     <button id="drop" onclick="drop()">See Carpools</button>
     <input id="address" class="removeOnFocus"type="textbox" value="Enter Address">
     <%= form_for [@user, @event], url: {action: "create"}, html: {:method => :post} do |f| %>
@@ -13,6 +14,7 @@
     <input type="hidden" name="carpool" value="carpool">
     <input id="submit" type="button" value="Submit Address">
     <%= f.submit 'Confirm Pin', :id => 'confirm_button'%>
+    </div>
   </div>
 
   <%= f.hidden_field :location %>
@@ -30,7 +32,7 @@
     </div>
     <br/>
   <% end %>
-
 <% end %>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2J6ZL433xkOnMv5zhsr7sQkGg4TYP0Dg&callback=initMap" async defer></script>

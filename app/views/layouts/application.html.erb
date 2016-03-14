@@ -44,7 +44,7 @@
     <![endif]-->
   </head>
   <body>
-
+    <div class="mycontainer">
     <div class="navbar navbar-default navbar-static-top">
       <div class="container" id="our-nav">
         <img src="http://i.imgur.com/fIjZRMK.png" class="logo-pic"/>
@@ -77,10 +77,17 @@
         <%= yield %>
       </div>
     </div>
+    <div >
+      <footer class="footer">
+        <div class="container">
+        <p>&copy; AmpedUp 2016</p>
+        </div>
+      </footer>
+    </div>
     <%= params %>
     <% if logged_in? %>
       <%= current_user.id %>
     <% end %>
-    <br>
+    </div>
   </body>
 </html>

@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     p @concert
 
 
-    if params[:carpool] == "true"
+    if (params[:carpool] == "true")
       @messages = Message.new
       @events = Event.where(is_carpool: true, concert_id: @concert.id)
       @messages = Message.joins(:event).where('events.is_carpool = true')
@@ -73,10 +73,12 @@ class EventsController < ApplicationController
     if params[:carpool] != "carpool"
       @event = Event.new(event_params)
       @event.is_meetup = true
-      @carpool = "true"
     else
-      @event = Event.new()
+      @event = Event.new(event_params)
       @event.is_carpool = true
+      @event.concert_id = params[:concert_id]
+      @carpool = "true"
+
     end
 
     p "xo"*47
@@ -85,9 +87,9 @@ class EventsController < ApplicationController
     p @event
 
     if @event.save
-      if params[:carpool] == "true"
+      if params[:carpool] == "true" || params[:carpool] == "carpool"
         p "$$$$$$$$$$$$  redirecting from carpool true $$$$$$$$$$$$$$$$$$"
-        redirect_to user_events_path(current_user.id), notice: 'Event was successfully created.'
+        redirect_to user_events_path(current_user.id, carpool: "true", format: params[:concert_id]), notice: 'Event was successfully created.'
       else
         p "%%%%%%%%%%%%%   redirecting from carpool false %%%%%%%%%%%%%%%%"
         redirect_to user_events_path(user_id:params[:user_id],format:@event.concert_id,carpool:"false", event_id:@event.id), notice: 'Event was successfully created.'

@@ -8,7 +8,7 @@
   margin: 0 auto;
   margin-left: 22%;
   height: 73vh;
-  padding-top: 3%;  
+  padding-top: 3%;
 }
 
 .button-container {
@@ -42,4 +42,8 @@ dl-horizontal {
 .background-pic {
   background-image: url("http://goo.gl/DuJpxn");
   height: 236px;
+}
+
+img {
+  border-radius: 5%;  
 }

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @concerts = Concert.where(user_id: @user.id)
     @hide_add_to_concerts = true
+    @concert_list_title = "Your Concerts"
     # user = User.find_by(email: 'user1@email.com')
     #   @current_user ||= User.find_by(id: log_in(user))
   end

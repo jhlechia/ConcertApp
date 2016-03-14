@@ -50,6 +50,7 @@ class ConcertsController < ApplicationController
     @concert = Concert.new
     @concerts = Concert.limit(7).order("RANDOM()")
     @hide_buttons = true
+    @concert_list_title = "Upcoming Concerts"
   end
 
   # GET /concerts/1/edit

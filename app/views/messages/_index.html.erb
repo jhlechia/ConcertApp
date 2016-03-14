@@ -39,7 +39,7 @@
           <div class="col-lg-10">
             <%= f.text_area :body, rows: 7, :class => 'form-control' %>
             <%= f.hidden_field :event_id, value: params[:format] %>
-            <%= f.text_field :name, value: current_user.name %>
+            <%= f.hidden_field :username, value: current_user.username %>
 
             <% if params[:carpool] == "true" %>
               <%= f.hidden_field :carpool, value: "true" %>

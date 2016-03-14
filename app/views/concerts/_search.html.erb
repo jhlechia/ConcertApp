@@ -1,4 +1,4 @@
-<div id="search-container" class="alert alert-warning">
+<div id="search-container" class="alert">
   <h1 class="search-title">Search for Concerts</h1>
   <%= form_tag search_concerts_path, remote: true, method: :get, id: 'concert-lookup-form' do %>
     <div class="form-group row no-padding text-center col-md-12">
@@ -10,20 +10,11 @@
         <i class="fa fa-search"></i> Look up Concerts
       <% end %>
     </div>
-
-
   <% end %>
   <%= render 'common/spinner' %>
 
-
-  <div>
     <table  id="concert-lookup-results" class="table-container">
 
     </table>
+  <div id="concert-lookup-errors"></div>
   </div>
-
-
-
-    <div id="concert-lookup-errors"></div>
-  </div>
-</div><!-- #search-container -->

@@ -6,7 +6,7 @@
 .concert-container {
   width: 500px;
   margin: 0 auto;
-  margin-left: 22%;
+  margin-left: 29%;
   height: 73vh;
   padding-top: 3%;
 }
@@ -58,16 +58,21 @@ dl-horizontal {
   border: none;
 }
 
-.alert-warning {
-  background-color: #9c2c86;
+#search-container {
+  min-height: 80vh;
+  max-height: 560px;
+  justify-content: center;
   background-image: url("http://i.imgur.com/5RMLfSp.jpg?1");
   background-repeat: no-repeat;
   border: none;
   z-index: 1;
-  background-size: cover;
-  height: 40rem;
+  background-size: contain;
   width: 100%;
+  max-height: 560px;
+}
 
+.concert-index {
+  margin-top: -60px;
 }
 /*
 concert-lookup-results {
@@ -79,8 +84,4 @@ concert-lookup-results {
 
 .search-title {
   color: 	#9c2c86;
-}
-
-.search-container {
-  justify-content: center;
 }

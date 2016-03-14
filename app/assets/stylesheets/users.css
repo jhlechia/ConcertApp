@@ -9,7 +9,7 @@ dl {
 }
 
 .profile_pic {
-    max-width: 250px;
+    /*max-width: 250px;*/
     min-width: 100px;
     flex-basis: 25%;
     width: auto;
@@ -29,5 +29,5 @@ dl {
 }
 
 .profile_info {
-  padding-left: 10%;
+  padding-left: 3%;
 }

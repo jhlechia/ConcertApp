@@ -40,6 +40,9 @@ class MessagesController < ApplicationController
       @message.event_id = Event.where(is_carpool: true).last.id
     end
     @message.body = params[:message][:body]
+    @message.body.prepend("/~/").prepend(params[:message][:name])
+    p "SDM      "*19
+    p @message
 
     respond_to do |format|
       if @message.save

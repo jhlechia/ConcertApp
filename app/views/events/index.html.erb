@@ -1,16 +1,11 @@
 <div class="event-index">
 <%- model_class = Event -%>
 
+<% if params[:carpool] == "false" %>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
-<% if params[:carpool] == "false" %>
-<<<<<<< HEAD
-<div class="table-container">
-=======
   <div class="table-container meetup-container">
->>>>>>> developer/jamie
   <table class="table">
     <thead>
             <th><%= model_class.human_attribute_name(:description) %></th>

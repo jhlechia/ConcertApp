@@ -7,7 +7,7 @@
       <li><th><h4><%= @concert.venue %></li>
       <li><h4><%= @concert.date.strftime("%A, %b %d") %></h4></li>
       </ul>
-    </div>  
+    </div>
   <% if params[:carpool] == "false" %>
   <div class="page-header">
     <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>

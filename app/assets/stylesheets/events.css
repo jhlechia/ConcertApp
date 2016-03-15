@@ -116,3 +116,85 @@
     background: -moz-linear-gradient(#F0F1F3, #AFB2B7); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#F0F1F3, #AFB2B7); /* Standard syntax */
     }
+
+
+
+
+
+
+
+
+
+
+
+
+.carpool-container {
+  display: flex;
+  width: 100%;
+
+  flex-flow:wrap;;
+  column-count: 3;
+  justify-content: space-around;
+
+
+}
+
+/*
+class="left-guitar"
+id='map-container'
+class="right-guitar"*/
+
+.flex-3 {
+  min-height: 50%;
+  margin-right:10px;
+}
+
+.hitch-a-ride {
+  padding: 15px 0 20px 0;
+  margin: 30px 0 30px 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .hitch-a-ride{
+    padding: 5px;
+    margin: 20px 0 0 0;
+  }
+  .carpool-container {
+    flex-direction:column;
+    justify-content: center;
+    position:relative;
+    padding:0;
+    margin:0;
+
+  }
+
+  .flex-1 {
+    transform: rotate(90deg);
+    top: -10em;
+    position:relative;
+    margin-top: 0px;
+    top:160px
+  }
+
+  .flex-2 {
+    min-width: 85%;
+    position:relative;
+    top:-200px;
+
+  }
+
+  .flex-3 {
+    transform: rotate(-90deg);
+    position:relative;;
+    top:-580px;
+
+  }
+
+  .messages-index {
+    position:relative;;
+
+    top:-400px;
+
+  }
+
+}

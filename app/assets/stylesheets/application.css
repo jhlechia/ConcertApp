@@ -220,6 +220,7 @@
 #concert-lookup-results {
   display:none;
   color: #fff;
+  text-shadow: 1px 1px 1px #9C2C86;
 }
 
 #concert-lookup-results h2 {

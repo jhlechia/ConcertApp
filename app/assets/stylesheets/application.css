@@ -25,6 +25,10 @@
   font-weight: 300;
   }
 
+  .event-show-info dd {
+    padding-right: 60%;
+  }
+
   .mycontainer {
     height: 100%;
   }
@@ -65,6 +69,12 @@
  }
  a:visited {
    color: white;
+ }
+
+ td a:visited {
+     background-color: transparent;
+     text-decoration: none;
+     color: white;
  }
 
  thead {

@@ -14,11 +14,13 @@ class ConcertsController < ApplicationController
 
     if @json['status'] == "error"
       respond_to do |format|
+        format.html {redirect_to :back}
         format.js {  render :js => "hide_spinner();
                                     use_flash_again();" }
       end
     elsif @json['response']['gigs'][0] == nil
       respond_to do |format|
+        format.html {redirect_to :back}
         format.js {
                   render :js => "hide_spinner();
                                   hide_name();
